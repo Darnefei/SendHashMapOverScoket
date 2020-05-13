@@ -213,7 +213,65 @@ public class Controller {
 	private Label uiButton1 = new Label();
 
 	@FXML
-	private Label uiButtonThree = new Label();
+	private Label uiButton2 = new Label();
+	@FXML
+	private Label uiButton3 = new Label();
+	@FXML
+	private Label uiButton4 = new Label();
+	@FXML
+	private Label uiButton5 = new Label();
+	@FXML
+	private Label uiButton6 = new Label();
+	@FXML
+	private Label uiButton7 = new Label();
+	@FXML
+	private Label uiButton8 = new Label();
+	@FXML
+	private Label uiButton9 = new Label();
+	@FXML
+	private Label uiButton10 = new Label();
+	@FXML
+	private Label uiButton11 = new Label();
+	@FXML
+	private Label uiButton12 = new Label();
+	@FXML
+	private Label uiButton13 = new Label();
+	@FXML
+	private Label uiButton14 = new Label();
+	@FXML
+	private Label uiButton15 = new Label();
+	@FXML
+	private Label uiButton16 = new Label();
+	@FXML
+	private Label uiButton17 = new Label();
+	@FXML
+	private Label uiButton18 = new Label();
+	@FXML
+	private Label uiButton19 = new Label();
+	@FXML
+	private Label uiButton20 = new Label();
+	@FXML
+	private Label uiButton21 = new Label();
+	@FXML
+	private Label uiButton22 = new Label();
+	@FXML
+	private Label uiButton23 = new Label();
+	@FXML
+	private Label uiButton24 = new Label();
+	@FXML
+	private Label uiButton25 = new Label();
+	@FXML
+	private Label uiButton26 = new Label();
+	@FXML
+	private Label uiButton27 = new Label();
+	@FXML
+	private Label uiButton28 = new Label();
+	@FXML
+	private Label uiButton29 = new Label();
+	@FXML
+	private Label uiButton30 = new Label();
+	@FXML
+	private Label uiButton31 = new Label();
 
 	@FXML
 	private BorderPane borderpane;
@@ -229,19 +287,7 @@ public class Controller {
 		user = username.getText();
 		passw = password.getText();
 		passw2 = confirmPassword.getText();
-
-		Stage stage = (Stage) signin.getScene().getWindow();
-		stage.close();
-		openDashboard();
-
-//		if (getState.equals("Sign In")) {
-//			SignInMethod();
 //
-//		} else if (getState.equals("Sign Up")) {
-//
-//			SignUpMethod();
-//		}
-
 //		Stage stage = (Stage) signin.getScene().getWindow();
 //		stage.close();
 //		openDashboard();
@@ -253,6 +299,11 @@ public class Controller {
 
 			SignUpMethod();
 		}
+
+//		Stage stage = (Stage) signin.getScene().getWindow();
+//		stage.close();
+//		openDashboard();
+
 
 	}
 
@@ -275,28 +326,163 @@ public class Controller {
 	}
 
 	@FXML
-	private void buttonDayOne(MouseEvent event) {
+	private void buttonDay1(MouseEvent event) {
 
 		loadUI("1", "yiipie ei yah");
 
 	}
 
 	@FXML
-	private void buttonDayTwo(MouseEvent event) {
+	private void buttonDay2(MouseEvent event) {
 		uiButton1.setText("hallo du");
 		loadUI("2", "Termin");
 	}
 
 	@FXML
-	private void buttonDayThree(MouseEvent event) {
-		
+	private void buttonDay3(MouseEvent event) {
+
 		loadUI("3", "noch ein termin");
 	}
 
 	@FXML
-	private void buttonDayFour(MouseEvent event) {
+	private void buttonDay4(MouseEvent event) {
 
 		loadUI("4", "sendString");
+	}
+
+	@FXML
+	void buttonDay10(MouseEvent event) {
+
+	}
+
+	@FXML
+	void buttonDay11(MouseEvent event) {
+
+	}
+
+	@FXML
+	void buttonDay12(MouseEvent event) {
+
+	}
+
+	@FXML
+	void buttonDay13(MouseEvent event) {
+
+	}
+
+	@FXML
+	void buttonDay14(MouseEvent event) {
+
+	}
+
+	@FXML
+	void buttonDay15(MouseEvent event) {
+
+	}
+
+	@FXML
+	void buttonDay16(MouseEvent event) {
+
+	}
+
+	@FXML
+	void buttonDay17(MouseEvent event) {
+
+	}
+
+	@FXML
+	void buttonDay18(MouseEvent event) {
+
+	}
+
+	@FXML
+	void buttonDay19(MouseEvent event) {
+
+	}
+
+	@FXML
+	void buttonDay20(MouseEvent event) {
+
+	}
+
+	@FXML
+	void buttonDay21(MouseEvent event) {
+
+	}
+
+	@FXML
+	void buttonDay22(MouseEvent event) {
+
+	}
+
+	@FXML
+	void buttonDay23(MouseEvent event) {
+
+	}
+
+	@FXML
+	void buttonDay24(MouseEvent event) {
+
+	}
+
+	@FXML
+	void buttonDay25(MouseEvent event) {
+
+	}
+
+	@FXML
+	void buttonDay26(MouseEvent event) {
+
+	}
+
+	@FXML
+	void buttonDay27(MouseEvent event) {
+
+	}
+
+	@FXML
+	void buttonDay28(MouseEvent event) {
+
+	}
+
+	@FXML
+	void buttonDay29(MouseEvent event) {
+
+	}
+
+	@FXML
+	void buttonDay30(MouseEvent event) {
+
+	}
+
+	@FXML
+	void buttonDay31(MouseEvent event) {
+
+	}
+
+	@FXML
+	void buttonDay5(MouseEvent event) {
+
+	}
+
+	@FXML
+	void buttonDay6(MouseEvent event) {
+
+	}
+
+	@FXML
+	void buttonDay7(MouseEvent event) {
+
+	}
+
+	@FXML
+	void buttonDay8(MouseEvent event) {
+
+	}
+
+	@FXML
+	void buttonDay9(MouseEvent event) {
+
 	}
 
 	private void loadUI(String ui, String datum) {
@@ -410,7 +596,7 @@ public class Controller {
 		String actualYear = formatterYear.format(date);
 		actMonth = Integer.parseInt(actualMonth) - 1;
 		actYear = Integer.parseInt(actualYear);
-		
+
 		System.out.println(actualYear);
 
 		uicontroller.actualDate.setText(month[actMonth]);
@@ -565,7 +751,7 @@ public class Controller {
 				return;
 			}
 			if (!passw.equals(passw2)) {
-				errorLabel.setText("Passw�rter m�ssen gleich sein");
+				errorLabel.setText("Passwoerter muessen gleich sein");
 				return;
 			}
 			if (passw.length() < 8) {
