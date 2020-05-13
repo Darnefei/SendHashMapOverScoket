@@ -6,7 +6,7 @@
 
 <Pane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="launcher.controller.Controller">
    <children>
-      <Label fx:id="uiButtonTwo" layoutX="2.0" layoutY="1.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="uiButtonTwo">
+      <Label fx:id="uiButton2" layoutX="2.0" layoutY="1.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="uiButton2">
          <font>
             <Font size="18.0" />
          </font>

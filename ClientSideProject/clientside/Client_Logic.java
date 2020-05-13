@@ -19,7 +19,9 @@ public class Client_Logic {
 	private static char[] bufferInteger = new char[5];
 	private static char[] bufferAppointment = new char[2000];
 	private static HashMap<Integer, String> getData = new HashMap<Integer, String>();
+
 	private static HashMap<String, String> convertedData = new HashMap<String, String>();
+
 
 	// methode kann gelöscht werden
 	public static void sendCommand(String command) {
@@ -64,7 +66,10 @@ public class Client_Logic {
 	}
 
 	// bekommen der ganzen Daten (alle Termine)
+
+
 	public static HashMap<Integer, String> getData() {
+
 
 		String[] splitData;
 		int anzahlZeichen;
@@ -78,6 +83,10 @@ public class Client_Logic {
 
 			printWriter.print("ok");
 			printWriter.flush();
+
+			int length = Integer.parseInt(lengthofMap);
+			System.out.println(length);
+
 			length = Integer.parseInt(lengthofMap);
 			System.out.println(length);
 			String[][] dataEntry = new String[length][length];
@@ -89,7 +98,10 @@ public class Client_Logic {
 
 				getData.put(i, nachricht);
 
+
+
 				// convertedData.put(dateEntry[0], dateEntry[1]);
+
 
 				printWriter.print("ok");
 				printWriter.flush();
@@ -104,6 +116,7 @@ public class Client_Logic {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
 		return null;
 
 	}

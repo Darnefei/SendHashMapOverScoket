@@ -53,9 +53,8 @@ public class Client_Launcher extends Application {
 
 	public static void main(String[] args) {
 
-
 //
-		
+
 //		
 //		boolean serverSuccess;
 //		HashMap<String,String> app= new HashMap <String, String>();
@@ -63,11 +62,18 @@ public class Client_Launcher extends Application {
 
 		// Connects to Client to the Server
 		boolean StartConnection = Client_ConnectToServer.startConnection();
+
+
+//		if(StartConnection == false) {
+//			System.exit(0);
+//		}
+
 		
 		if(StartConnection == false) {
 			System.exit(0);
 		}
 		
+
 
 		launch(args);
 
