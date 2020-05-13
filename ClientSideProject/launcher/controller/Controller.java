@@ -38,9 +38,12 @@ import clientside.Client_HashFunction;
 import clientside.Client_Launcher;
 import clientside.Client_Logic;
 
-public class Controller implements Initializable {
+public class Controller {
 
-	static int actMonth;
+	static int linesofHash = 0;
+	
+	
+	public static int actMonth;
 	static String[] month = new String[12];
 	static Controller uicontroller;
 	static Controller meetingcontroller;
@@ -226,6 +229,7 @@ public class Controller implements Initializable {
 		user = username.getText();
 		passw = password.getText();
 		passw2 = confirmPassword.getText();
+<<<<<<< HEAD
 
 		Stage stage = (Stage) signin.getScene().getWindow();
 		stage.close();
@@ -239,6 +243,21 @@ public class Controller implements Initializable {
 //			SignUpMethod();
 //		}
 
+=======
+
+//		Stage stage = (Stage) signin.getScene().getWindow();
+//		stage.close();
+//		openDashboard();
+
+		if (getState.equals("Sign In")) {
+			SignInMethod();
+
+		} else if (getState.equals("Sign Up")) {
+
+			SignUpMethod();
+		}
+
+>>>>>>> d3ca084d0043f29fb13d859d6b5d6d5586694613
 	}
 
 	@FXML
@@ -281,6 +300,7 @@ public class Controller implements Initializable {
 
 	@FXML
 	private void buttonDayFour(MouseEvent event) {
+<<<<<<< HEAD
 		// String s = getactualDate() -> aktuelles Datum des Knopfes
 		// getDatenaus HashMap -> Hashmap suchen nach Datum -> Eintrag
 		// getDatenausHashmap soll erst enden, wenn alle Daten die das Datum haben
@@ -289,6 +309,9 @@ public class Controller implements Initializable {
 		// eigentlich dann nur noch Stunden:Mintunen (Jahr:Monat:Tag erschlieﬂt sich aus
 		// UI)
 		// wir bekommen sendString raus.
+=======
+		
+>>>>>>> d3ca084d0043f29fb13d859d6b5d6d5586694613
 		loadUI("4", "sendString");
 	}
 
@@ -319,7 +342,62 @@ public class Controller implements Initializable {
 		}
 
 	}
+	// String s = getactualDate() -> aktuelles Datum des Knopfes
+			// getDatenaus HashMap -> Hashmap suchen nach Datum -> Eintrag
+			// getDatenausHashmap soll erst enden, wenn alle Daten die das Datum haben
+			// gelesen wurden.
+			// getDatenausHashmap sortieren nach Stunden und Minuten angezeigt werden muss
+			// eigentlich dann nur noch Stunden:Mintunen (Jahr:Monat:Tag erschlieﬂt sich aus
+			// UI)
+			// wir bekommen sendString raus.
+	
+	//----------------------------------------------------Mehotde---------------------
+	//hier werden die Daten geholt!!!!
+	//‹bergeben werden muss Jahr/Monat
+	void readValueofHashMap(int Year, int Month){
+		//2020-12
+		HashMap<Integer, String> allEntrys = new HashMap<Integer, String>();
+		allEntrys = Client_Logic.getData();
+		String dateandEntry;
+		String date;
+		String note;
+		String[] splitter;
+		String allNote = null;
+		int[] splitints = new int[5];
+		
+		//iterriert die ganze HashMap durch
+		while(allEntrys.containsKey(linesofHash)) {
+			dateandEntry = allEntrys.get(linesofHash);
+			splitter = dateandEntry.split("," , 2);
+			date=splitter[0]; note = splitter[1];
+			splitter = date.split("-");
+			
+			for (int i = 0; i < splitter.length; i++) {
 
+				splitints[i] = Integer.parseInt(splitter[i]);
+			}		
+			
+			if(splitints[0]==Year) {
+				if(splitints[1]==Month) {
+					allNote += splitints[3] + ":" + splitints[4] + "\n" + note + "\n\n";
+					
+					
+				}
+				
+				
+			}
+			
+			
+			
+			linesofHash++;
+			
+		}
+		loadUI(Integer.toString(splitints[2]), allNote );
+		
+		
+	}
+	
+	
 	public void openDashboard() {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/launcher/fxml/dashboard.fxml"));
@@ -420,12 +498,18 @@ public class Controller implements Initializable {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/launcher/fxml/meeting.fxml"));
 			Parent root = loader.load();
+<<<<<<< HEAD
 			meetingcontroller = loader.getController();
 			// actuelles Datum auslesen + String -> in die HashMap rein. Aktualisiere Daten
 			// (Knopf)
 			// Senden an Datenbank
 
 			setActualDate();
+=======
+			// actuelles Datum auslesen + String -> in die HashMap rein. Aktualisiere Daten
+			// (Knopf)
+			// Senden an Datenbank
+>>>>>>> d3ca084d0043f29fb13d859d6b5d6d5586694613
 
 			Stage Meeting = new Stage();
 			Meeting.setScene(new Scene(root));
@@ -436,6 +520,7 @@ public class Controller implements Initializable {
 			System.err.println(e);
 		}
 	}
+<<<<<<< HEAD
 
 	public void setActualDate() {
 		meetingcontroller.datePicker.setValue(LocalDate.now());
@@ -460,10 +545,21 @@ public class Controller implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 
 	}
+=======
+>>>>>>> d3ca084d0043f29fb13d859d6b5d6d5586694613
 
 	@FXML
 	void nextMonth(MouseEvent event) throws IOException {
 
+<<<<<<< HEAD
+=======
+		/*
+		 * FXMLLoader loader = new
+		 * FXMLLoader(getClass().getResource("/launcher/fxml/dashboard.fxml"));
+		 * Controller uicontroller = loader.getController();
+		 * uicontroller.actualDate.setText("February");
+		 */
+>>>>>>> d3ca084d0043f29fb13d859d6b5d6d5586694613
 		if (actMonth == 11) {
 			actMonth = 0;
 		} else {
