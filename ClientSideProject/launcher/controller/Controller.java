@@ -207,14 +207,17 @@ public class Controller implements Initializable {
 		passw2 = confirmPassword.getText();
 		
 		
+		Stage stage = (Stage) signin.getScene().getWindow();
+		stage.close();
+		openDashboard();
 
-		if (getState.equals("Sign In")) {
-			SignInMethod();
-
-		} else if (getState.equals("Sign Up")) {
-
-			SignUpMethod();
-		}
+//		if (getState.equals("Sign In")) {
+//			SignInMethod();
+//
+//		} else if (getState.equals("Sign Up")) {
+//
+//			SignUpMethod();
+//		}
 
 	
 
