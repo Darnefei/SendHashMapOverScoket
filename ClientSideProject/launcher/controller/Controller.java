@@ -5,7 +5,10 @@ import java.net.URL;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.YearMonth;
+import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.ResourceBundle;
@@ -19,10 +22,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -37,6 +43,7 @@ public class Controller implements Initializable {
 	static int actMonth;
 	static String[] month = new String[12];
 	static Controller uicontroller;
+	static Controller meetingcontroller;
 	Date ds = new Date();
 	String gz = ds.toString();
 	String getState;
@@ -47,6 +54,21 @@ public class Controller implements Initializable {
 	private int count = 0;
 	private HashMap<String, String> UserData = new HashMap<String, String>();
 	private boolean serverStatus;
+
+	@FXML
+	private DatePicker datePicker = new DatePicker();
+
+	@FXML
+	private TextField textFieldHour;
+
+	@FXML
+	private Button addMeeting;
+
+	@FXML
+	private TextField textFieldMinute;
+
+	@FXML
+	private TextField meetingName;
 
 	@FXML
 	private Button signin;
@@ -86,7 +108,9 @@ public class Controller implements Initializable {
 
 	@FXML
 	private Button editMeeting;
+
 	@FXML
+
 	private Button buttonDayTwo;
 
 	@FXML
@@ -194,19 +218,15 @@ public class Controller implements Initializable {
 	@FXML
 	private Label tagesansicht;
 
-
-
 	@FXML
 	void login(ActionEvent event) {
 
-	
 		getState = buttonLogin.getText();
 
 		user = username.getText();
 		passw = password.getText();
 		passw2 = confirmPassword.getText();
-		
-		
+
 		Stage stage = (Stage) signin.getScene().getWindow();
 		stage.close();
 		openDashboard();
@@ -218,8 +238,6 @@ public class Controller implements Initializable {
 //
 //			SignUpMethod();
 //		}
-
-	
 
 	}
 
@@ -242,15 +260,9 @@ public class Controller implements Initializable {
 	}
 
 	@FXML
-	private void buttonDayOne(MouseEvent event) throws IOException {
+	private void buttonDayOne(MouseEvent event) {
 
-		/*
-		 * FXMLLoader uiloader = new
-		 * FXMLLoader(getClass().getResource("/launcher/fxml/uiButton1.fxml"));
-		 * Controller uibcontroller = uiloader.load();
-		 * uibcontroller.uiButtonOne.setText("Hola");
-		 */
-
+		
 		loadUI("1", "yiipie ei yah");
 
 	}
@@ -269,37 +281,33 @@ public class Controller implements Initializable {
 
 	@FXML
 	private void buttonDayFour(MouseEvent event) {
-		//String s = getactualDate() -> aktuelles Datum des Knopfes
-		//getDatenaus HashMap -> Hashmap suchen nach Datum -> Eintrag
-		//getDatenausHashmap soll erst enden, wenn alle Daten die das Datum haben gelesen wurden. 
-		//getDatenausHashmap sortieren nach Stunden und Minuten angezeigt werden muss eigentlich dann nur noch Stunden:Mintunen (Jahr:Monat:Tag erschließt sich aus UI)
+		// String s = getactualDate() -> aktuelles Datum des Knopfes
+		// getDatenaus HashMap -> Hashmap suchen nach Datum -> Eintrag
+		// getDatenausHashmap soll erst enden, wenn alle Daten die das Datum haben
+		// gelesen wurden.
+		// getDatenausHashmap sortieren nach Stunden und Minuten angezeigt werden muss
+		// eigentlich dann nur noch Stunden:Mintunen (Jahr:Monat:Tag erschließt sich aus
+		// UI)
 		// wir bekommen sendString raus.
 		loadUI("4", "sendString");
 	}
 
 	private void loadUI(String ui, String datum) {
-		// Parent root = null;
 		try {
 
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/launcher/fxml/uiButton" + ui + ".fxml"));
 			Parent root = loader.load();
 
 			uicontroller = loader.getController();
-
 			uicontroller.uiButtonOne.setText(datum);
-
-			if (uiButtonThree.getText().equals("")) {
-				buttonDayThree.setStyle("-fx-border-color: red");
-			}
 
 			borderpane.setCenter(root);
 		} catch (IOException e) {
 
 			System.out.println(e);
 		}
-		// borderpane.setCenter(root);
+
 	}
-	
 
 	public void getMonths() {
 
@@ -331,8 +339,8 @@ public class Controller implements Initializable {
 			getActualMonth();
 			getDaysperMonth();
 
-			//new Client_Launcher().start()(root));
-		 Client_Launcher.getDashboardStage().setScene(new Scene(root));
+			// new Client_Launcher().start()(root));
+			Client_Launcher.getDashboardStage().setScene(new Scene(root));
 			Client_Launcher.getDashboardStage().show();
 
 		} catch (IOException e) {
@@ -347,24 +355,22 @@ public class Controller implements Initializable {
 		actMonth = Integer.parseInt(actualMonth) - 1;
 
 		uicontroller.actualDate.setText(month[actMonth]);
-		
+
 	}
 
 	private void getDaysperMonth() {
 
-		//braucht evtl noch eine Methode für aktuelles Datum?
+		// braucht evtl noch eine Methode für aktuelles Datum?
 
-
-		
 		switch (month[actMonth]) {
 		case "January":
 		case "March":
-		case "May":		
+		case "May":
 		case "July":
 		case "August":
 		case "October":
 		case "December":
-			
+
 			uicontroller.buttonDayThirtyOne.setDisable(false);
 			uicontroller.buttonDayThirtyOne.setVisible(true);
 			uicontroller.buttonDayThirty.setDisable(false);
@@ -414,26 +420,41 @@ public class Controller implements Initializable {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/launcher/fxml/meeting.fxml"));
 			Parent root = loader.load();
-			//actuelles Datum auslesen + String -> in die HashMap rein. Aktualisiere Daten (Knopf) 
-			//Senden an Datenbank
+			meetingcontroller = loader.getController();
+			// actuelles Datum auslesen + String -> in die HashMap rein. Aktualisiere Daten
+			// (Knopf)
+			// Senden an Datenbank
+
+			setActualDate();
 
 			Stage Meeting = new Stage();
 			Meeting.setScene(new Scene(root));
 			Meeting.setAlwaysOnTop(true);
-			Meeting.initStyle(StageStyle.UNDECORATED);
 			Meeting.show();
 
 		} catch (IOException e) {
 			System.err.println(e);
 		}
 	}
-	// public void openDashboard() {
-	// Stage primaryStage = new Stage();
-	// primaryStage.setTitle("Full Calendar Example");
-	// primaryStage.setScene(new Scene(new
-	// FullCalendarView(YearMonth.now()).getView()));
-	// primaryStage.show();
-	// }
+
+	public void setActualDate() {
+		meetingcontroller.datePicker.setValue(LocalDate.now());
+	}
+
+	@FXML
+	private void addMeeting() {
+		LocalDate datum = datePicker.getValue();
+		String hour = textFieldHour.getText();
+		String min = textFieldMinute.getText();
+		String meetingNamen = meetingName.getText();
+		String hourmin = hour + "-" + min + "," + meetingNamen;
+
+		System.out.println(datum + "-" + hourmin);
+
+		Stage stage = (Stage) addMeeting.getScene().getWindow();
+		stage.close();
+
+	}
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -442,13 +463,7 @@ public class Controller implements Initializable {
 
 	@FXML
 	void nextMonth(MouseEvent event) throws IOException {
-		
-		/*
-		 * FXMLLoader loader = new
-		 * FXMLLoader(getClass().getResource("/launcher/fxml/dashboard.fxml"));
-		 * Controller uicontroller = loader.getController();
-		 * uicontroller.actualDate.setText("February");
-		 */
+
 		if (actMonth == 11) {
 			actMonth = 0;
 		} else {
@@ -461,10 +476,7 @@ public class Controller implements Initializable {
 
 	@FXML
 	void prevMonth(MouseEvent event) throws IOException {
-		// FXMLLoader loader = new
-		// FXMLLoader(getClass().getResource("/launcher/fxml/dashboard.fxml"));
-		// Controller uicontroller = loader.getController();
-		// uicontroller.actualDate.setText("April");
+
 		if (actMonth == 0) {
 			actMonth = 11;
 		} else {
@@ -475,8 +487,9 @@ public class Controller implements Initializable {
 
 		getDaysperMonth();
 	}
+
 	private void SignUpMethod() {
-		
+
 		username.clear();
 		username.setPromptText("Nutzername");
 		password.clear();
@@ -580,5 +593,5 @@ public class Controller implements Initializable {
 		}
 
 	}
-	
+
 }
