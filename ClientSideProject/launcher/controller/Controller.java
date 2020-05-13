@@ -229,21 +229,6 @@ public class Controller {
 		passw = password.getText();
 		passw2 = confirmPassword.getText();
 
-		Stage stage = (Stage) signin.getScene().getWindow();
-		stage.close();
-		openDashboard();
-
-//		if (getState.equals("Sign In")) {
-//			SignInMethod();
-//
-//		} else if (getState.equals("Sign Up")) {
-//
-//			SignUpMethod();
-//		}
-
-//		Stage stage = (Stage) signin.getScene().getWindow();
-//		stage.close();
-//		openDashboard();
 
 		if (getState.equals("Sign In")) {
 			SignInMethod();
@@ -252,6 +237,12 @@ public class Controller {
 
 			SignUpMethod();
 		}
+
+//		Stage stage = (Stage) signin.getScene().getWindow();
+//		stage.close();
+//		openDashboard();
+
+
 
 	}
 
@@ -507,9 +498,20 @@ public class Controller {
 		String hour = textFieldHour.getText();
 		String min = textFieldMinute.getText();
 		String meetingNamen = meetingName.getText();
-		String hourmin = hour + "-" + min + "," + meetingNamen;
+		
+		
+		String wholeDate = datum.toString() + "-"+ hour +"-" + min ;
 
-		System.out.println(datum + "-" + hourmin);
+		Client_Logic.sendCommand("newappointment");
+		UserData.put(wholeDate, meetingNamen);
+		
+		Client_Logic.sendData(UserData);
+		UserData.remove(wholeDate);
+		
+		
+		
+	
+		
 
 		Stage stage = (Stage) addMeeting.getScene().getWindow();
 		stage.close();
