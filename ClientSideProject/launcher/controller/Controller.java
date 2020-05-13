@@ -42,6 +42,7 @@ public class Controller {
 
 	static int linesofHash = 0;
 
+	public static int actYear;
 	public static int actMonth;
 	static String[] month = new String[12];
 	static Controller uicontroller;
@@ -209,7 +210,7 @@ public class Controller {
 	private Label dayInfo;
 
 	@FXML
-	private Label uiButtonOne = new Label();
+	private Label uiButton1 = new Label();
 
 	@FXML
 	private Label uiButtonThree = new Label();
@@ -267,20 +268,19 @@ public class Controller {
 	@FXML
 	private void buttonDayOne(MouseEvent event) {
 
-
 		loadUI("1", "yiipie ei yah");
 
 	}
 
 	@FXML
 	private void buttonDayTwo(MouseEvent event) {
-		uiButtonOne.setText("hallo du");
+		uiButton1.setText("hallo du");
 		loadUI("2", "Termin");
 	}
 
 	@FXML
 	private void buttonDayThree(MouseEvent event) {
-		uiButtonOne.setText("hallo du");
+		
 		loadUI("3", "noch ein termin");
 	}
 
@@ -297,7 +297,7 @@ public class Controller {
 			Parent root = loader.load();
 
 			uicontroller = loader.getController();
-			uicontroller.uiButtonOne.setText(datum);
+			uicontroller.uiButton1.setText(datum);
 
 			borderpane.setCenter(root);
 		} catch (IOException e) {
@@ -322,7 +322,8 @@ public class Controller {
 	// getDatenausHashmap soll erst enden, wenn alle Daten die das Datum haben
 	// gelesen wurden.
 	// getDatenausHashmap sortieren nach Stunden und Minuten angezeigt werden muss
-	// eigentlich dann nur noch Stunden:Mintunen (Jahr:Monat:Tag erschlie�t sich aus
+	// eigentlich dann nur noch Stunden:Mintunen (Jahr:Monat:Tag erschlie�t sich
+	// aus
 	// UI)
 	// wir bekommen sendString raus.
 
@@ -394,9 +395,14 @@ public class Controller {
 
 	private void getActualMonth() {
 		Date date = new Date();
-		SimpleDateFormat formatter = new SimpleDateFormat("MM");
-		String actualMonth = formatter.format(date);
+		SimpleDateFormat formatterMonth = new SimpleDateFormat("MM");
+		SimpleDateFormat formatterYear = new SimpleDateFormat("YYYY");
+		String actualMonth = formatterMonth.format(date);
+		String actualYear = formatterYear.format(date);
 		actMonth = Integer.parseInt(actualMonth) - 1;
+		actYear = Integer.parseInt(actualYear);
+		
+		System.out.println(actualYear);
 
 		uicontroller.actualDate.setText(month[actMonth]);
 
@@ -476,7 +482,6 @@ public class Controller {
 			// (Knopf)
 			// Senden an Datenbank
 
-
 			Stage Meeting = new Stage();
 			Meeting.setScene(new Scene(root));
 			Meeting.setAlwaysOnTop(true);
@@ -486,7 +491,6 @@ public class Controller {
 			System.err.println(e);
 		}
 	}
-
 
 	public void setActualDate() {
 		meetingcontroller.datePicker.setValue(LocalDate.now());
@@ -518,26 +522,18 @@ public class Controller {
 
 	}
 
-
-
 	@FXML
 	void nextMonth(MouseEvent event) throws IOException {
 
-
-		/*
-		 * FXMLLoader loader = new
-		 * FXMLLoader(getClass().getResource("/launcher/fxml/dashboard.fxml"));
-		 * Controller uicontroller = loader.getController();
-		 * uicontroller.actualDate.setText("February");
-		 */
-
 		if (actMonth == 11) {
 			actMonth = 0;
+			actYear += 1;
 		} else {
 			actMonth += 1;
 		}
 		actualDate.setText(month[actMonth]);
 		getDaysperMonth();
+		readValueofHashMap(actYear, actMonth);
 
 	}
 
@@ -546,13 +542,14 @@ public class Controller {
 
 		if (actMonth == 0) {
 			actMonth = 11;
+			actYear -= 1;
 		} else {
 			actMonth -= 1;
 		}
 
 		actualDate.setText(month[actMonth]);
-
 		getDaysperMonth();
+		readValueofHashMap(actYear, actMonth);
 	}
 
 	private void SignUpMethod() {
