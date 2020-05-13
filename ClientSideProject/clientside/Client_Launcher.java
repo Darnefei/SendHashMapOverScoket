@@ -62,18 +62,18 @@ public class Client_Launcher extends Application {
 
 		// Connects to Client to the Server
 		boolean StartConnection = Client_ConnectToServer.startConnection();
-<<<<<<< HEAD
+
 
 //		if(StartConnection == false) {
 //			System.exit(0);
 //		}
-=======
+
 		
 		if(StartConnection == false) {
 			System.exit(0);
 		}
 		
->>>>>>> d3ca084d0043f29fb13d859d6b5d6d5586694613
+
 
 		launch(args);
 

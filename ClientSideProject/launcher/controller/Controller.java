@@ -229,7 +229,6 @@ public class Controller {
 		user = username.getText();
 		passw = password.getText();
 		passw2 = confirmPassword.getText();
-<<<<<<< HEAD
 
 		Stage stage = (Stage) signin.getScene().getWindow();
 		stage.close();
@@ -243,8 +242,6 @@ public class Controller {
 //			SignUpMethod();
 //		}
 
-=======
-
 //		Stage stage = (Stage) signin.getScene().getWindow();
 //		stage.close();
 //		openDashboard();
@@ -257,7 +254,6 @@ public class Controller {
 			SignUpMethod();
 		}
 
->>>>>>> d3ca084d0043f29fb13d859d6b5d6d5586694613
 	}
 
 	@FXML
@@ -300,7 +296,7 @@ public class Controller {
 
 	@FXML
 	private void buttonDayFour(MouseEvent event) {
-<<<<<<< HEAD
+
 		// String s = getactualDate() -> aktuelles Datum des Knopfes
 		// getDatenaus HashMap -> Hashmap suchen nach Datum -> Eintrag
 		// getDatenausHashmap soll erst enden, wenn alle Daten die das Datum haben
@@ -309,9 +305,7 @@ public class Controller {
 		// eigentlich dann nur noch Stunden:Mintunen (Jahr:Monat:Tag erschließt sich aus
 		// UI)
 		// wir bekommen sendString raus.
-=======
-		
->>>>>>> d3ca084d0043f29fb13d859d6b5d6d5586694613
+
 		loadUI("4", "sendString");
 	}
 
@@ -498,18 +492,18 @@ public class Controller {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/launcher/fxml/meeting.fxml"));
 			Parent root = loader.load();
-<<<<<<< HEAD
+
 			meetingcontroller = loader.getController();
 			// actuelles Datum auslesen + String -> in die HashMap rein. Aktualisiere Daten
 			// (Knopf)
 			// Senden an Datenbank
 
 			setActualDate();
-=======
+
 			// actuelles Datum auslesen + String -> in die HashMap rein. Aktualisiere Daten
 			// (Knopf)
 			// Senden an Datenbank
->>>>>>> d3ca084d0043f29fb13d859d6b5d6d5586694613
+
 
 			Stage Meeting = new Stage();
 			Meeting.setScene(new Scene(root));
@@ -520,7 +514,7 @@ public class Controller {
 			System.err.println(e);
 		}
 	}
-<<<<<<< HEAD
+
 
 	public void setActualDate() {
 		meetingcontroller.datePicker.setValue(LocalDate.now());
@@ -541,25 +535,19 @@ public class Controller {
 
 	}
 
-	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
 
-	}
-=======
->>>>>>> d3ca084d0043f29fb13d859d6b5d6d5586694613
 
 	@FXML
 	void nextMonth(MouseEvent event) throws IOException {
 
-<<<<<<< HEAD
-=======
+
 		/*
 		 * FXMLLoader loader = new
 		 * FXMLLoader(getClass().getResource("/launcher/fxml/dashboard.fxml"));
 		 * Controller uicontroller = loader.getController();
 		 * uicontroller.actualDate.setText("February");
 		 */
->>>>>>> d3ca084d0043f29fb13d859d6b5d6d5586694613
+
 		if (actMonth == 11) {
 			actMonth = 0;
 		} else {

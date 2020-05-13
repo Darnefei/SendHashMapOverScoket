@@ -19,10 +19,9 @@ public class Client_Logic {
 	private static char[] bufferInteger = new char[5];
 	private static char[] bufferAppointment = new char[2000];
 	private static HashMap<Integer, String> getData = new HashMap<Integer, String>();
-<<<<<<< HEAD
-=======
+
 	private static HashMap<String, String> convertedData = new HashMap<String, String>();
->>>>>>> d3ca084d0043f29fb13d859d6b5d6d5586694613
+
 
 	// methode kann gelöscht werden
 	public static void sendCommand(String command) {
@@ -67,11 +66,10 @@ public class Client_Logic {
 	}
 
 	// bekommen der ganzen Daten (alle Termine)
-<<<<<<< HEAD
-	static HashMap<Integer, String> getData() {
-=======
+
+
 	public static HashMap<Integer, String> getData() {
->>>>>>> d3ca084d0043f29fb13d859d6b5d6d5586694613
+
 
 		String[] splitData;
 		int anzahlZeichen;
@@ -85,15 +83,14 @@ public class Client_Logic {
 
 			printWriter.print("ok");
 			printWriter.flush();
-<<<<<<< HEAD
+
 			int length = Integer.parseInt(lengthofMap);
 			System.out.println(length);
-=======
+
 			length = Integer.parseInt(lengthofMap);
 			System.out.println(length);
 			String[][] dataEntry = new String[length][length];
 			String[] split;
->>>>>>> d3ca084d0043f29fb13d859d6b5d6d5586694613
 
 			for (int i = 1; i < length; i++) {
 				anzahlZeichen = bufferedReader.read(bufferAppointment, 0, 2000);
@@ -101,11 +98,11 @@ public class Client_Logic {
 
 				getData.put(i, nachricht);
 
-<<<<<<< HEAD
-=======
+
+
 				// convertedData.put(dateEntry[0], dateEntry[1]);
 
->>>>>>> d3ca084d0043f29fb13d859d6b5d6d5586694613
+
 				printWriter.print("ok");
 				printWriter.flush();
 
@@ -119,10 +116,7 @@ public class Client_Logic {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-<<<<<<< HEAD
-		// last handshake, before sending all the data
-=======
->>>>>>> d3ca084d0043f29fb13d859d6b5d6d5586694613
+
 		return null;
 
 	}
