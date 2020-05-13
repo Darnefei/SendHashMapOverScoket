@@ -11,6 +11,7 @@ public class SQL_Data {
 	private static String host = "localhost";
 	private static String port = "3306";
 	private static String database = "calender";
+	private static String ssl = "?autoReconnect=true&useSSL=false";
 	private static String username = "superuser";
 	private static String password = "bU}H05KE2Y=.";
 	String noteDate;
@@ -102,7 +103,7 @@ public class SQL_Data {
 
 			while (rs.next()) {
 
-				noteDate = rs.getInt("eyear") + ":" + rs.getInt("emonth") + ":" + rs.getInt("eday") + ":" +rs.getString("eHour") + ":" 
+				noteDate = rs.getInt("eyear") + "-" + rs.getInt("emonth") + "-" + rs.getInt("eday") + "-" +rs.getString("eHour") + "-" 
 						+ rs.getString("eminute");
 				noteText = rs.getString("enote");
 				noteElement.put(i, noteDate + "," + noteText);
@@ -199,8 +200,8 @@ public class SQL_Data {
 	public static boolean createEntry(String Date, String Note) {
 
 		ConnectDB();
-		splitints = new int[6];
-		String[] split = Date.split(":");
+		splitints = new int[5];
+		String[] split = Date.split("-");
 
 		for (int i = 0; i < split.length; i++) {
 
