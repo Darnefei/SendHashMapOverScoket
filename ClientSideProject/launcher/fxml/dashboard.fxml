@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollBar?>
+<?import javafx.scene.control.SplitMenuButton?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="578.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="launcher.controller.Controller">
+   <children>
+      <AnchorPane prefHeight="69.0" prefWidth="1600.0">
+         <children>
+            <Label fx:id="weatherData" layoutX="1521.0" layoutY="25.0" text="Wetterdaten" />
+            <SplitMenuButton layoutX="1362.0" layoutY="21.0" mnemonicParsing="false" text="Nutzername">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Action 1" />
+                <MenuItem mnemonicParsing="false" text="Action 2" />
+              </items>
+            </SplitMenuButton>
+            <Button fx:id="nextMonth" layoutX="840.0" layoutY="21.0" mnemonicParsing="false" text="Monat vor" />
+            <Button fx:id="prevMonth" layoutX="564.0" layoutY="21.0" mnemonicParsing="false" text="Monat zurück" />
+            <Label fx:id="actualDate" layoutX="724.0" layoutY="25.0" text="Datum" />
+         </children>
+      </AnchorPane>
+      <SplitPane dividerPositions="0.5" prefHeight="334.0" prefWidth="600.0" scaleShape="false" VBox.vgrow="NEVER">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="400.0" prefWidth="400.0">
+               <children>
+                  <GridPane layoutY="-1.0" prefHeight="466.0" prefWidth="933.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Button fx:id="buttonDayTwo" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="2" GridPane.columnIndex="1" />
+                        <Button fx:id="buttonDayThree" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="3" GridPane.columnIndex="2" />
+                        <Button fx:id="buttonDayEight" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="8" GridPane.rowIndex="1" />
+                        <Button fx:id="buttonDayNine" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="9" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Button fx:id="buttonDayFifteen" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="15" GridPane.rowIndex="2" />
+                        <Button fx:id="buttonDaySixteen" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="16" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Button fx:id="buttonDayTwentyTwo" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="22" GridPane.rowIndex="3" />
+                        <Button fx:id="buttonDayTwentyFive" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="25" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                        <Button fx:id="buttonDayTwentyFour" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="24" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                        <Button fx:id="buttonDayThirty" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="30" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <Button fx:id="buttonDayTwentyNine" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="29" GridPane.rowIndex="4" />
+                        <Button fx:id="buttonDayTwentyThree" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="23" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Button fx:id="buttonDayFourteen" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="14" GridPane.columnIndex="6" GridPane.rowIndex="1" />
+                        <Button fx:id="buttonDayTwentyOne" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="21" GridPane.columnIndex="6" GridPane.rowIndex="2" />
+                        <Button fx:id="buttonDayTwenty" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="20" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+                        <Button fx:id="buttonDayTwentyEight" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="28" GridPane.columnIndex="6" GridPane.rowIndex="3" />
+                        <Button fx:id="buttonDayTwentySeven" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="27" GridPane.columnIndex="5" GridPane.rowIndex="3" />
+                        <Button fx:id="buttonDayTwentySix" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="26" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+                        <Button fx:id="buttonDayTwelve" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="12" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                        <Button fx:id="buttonDayFive" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="5" GridPane.columnIndex="4" />
+                        <Button fx:id="buttonDaySeven" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="7" GridPane.columnIndex="6" />
+                        <Button fx:id="buttonDaySix" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="6" GridPane.columnIndex="5" />
+                        <Button fx:id="buttonDayThirteen" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="13" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+                        <Button fx:id="buttonDaySeventeen" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="17" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                        <Button fx:id="buttonDayEighteen" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="18" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                        <Button fx:id="buttonDayNineteen" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="19" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+                        <Button fx:id="buttonDayTen" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="10" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <Button fx:id="buttonDayFour" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="4" GridPane.columnIndex="3" />
+                        <Button fx:id="buttonDayEleven" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="11" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                        <Button fx:id="buttonDayOne" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="1" />
+                        <Button fx:id="buttonDayThirtyOne" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="31" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                     </children>
+                  </GridPane>
+               </children>
+            </AnchorPane>
+          <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="466.0" minWidth="300.0" prefHeight="466.0" prefWidth="659.0">
+               <children>
+                  <Label layoutX="310.0" layoutY="216.0" text="Tagesansicht" />
+                  <ScrollBar layoutX="645.0" orientation="VERTICAL" prefHeight="466.0" prefWidth="14.0" />
+               </children></AnchorPane>
+        </items>
+      </SplitPane>
+      <AnchorPane prefHeight="45.0" prefWidth="1600.0">
+         <children>
+            <Label layoutX="772.0" layoutY="13.0" text="Platzhalter" />
+            <Button fx:id="newMeeting" layoutX="1073.0" layoutY="9.0" mnemonicParsing="false" onMouseClicked="#newMeeting" text="Termin hinzufügen" />
+            <Button fx:id="editMeeting" layoutX="1298.0" layoutY="9.0" mnemonicParsing="false" onMouseClicked="#editMeeting" text="Termin bearbeiten" />
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>

@@ -1,0 +1,28 @@
+Beachten:
+Es dürfen maximal erstmal 2000 zeichen gesendet werden, kann man erhöhen, es muss aber im Interface abgefagnen werden, damit es nicht mehr sind als .....
+Nutzername kein = und maximal 64 zeichen
+Passwort 64 zeichen
+
+
+12.05.2020:
+
+Registrieren + Hashfunktion
+
+
+Kalenderfreigabe (SQL -> set Freigabe auf 1 oder 0)
+Termin bearbeiten evtl noch rein
+
+
+13.05.2020:
+
+Lgon mit statischer Hashfunktion - dadurch sind die Passwörter immer gleich :D
+Also Client statisch, Server zufall
+
+EVTL Serverbits erhöhen
+
+Mehotde für Klasseneinlesen erstellen
+Philipp implementiert die methode -> Wir müssen dann mit Datum darauf zugreifen und evtl Daten.
+Evtl kann auch gleich die HashMap in die Methode rein.... Öffnet ja ein neues element dafür immer....
+Also kann Hashmap nicht direkt geladen werden -> Hashmap wird einzeln ausgelesen (länge integer wissen wir ja)
+
+
