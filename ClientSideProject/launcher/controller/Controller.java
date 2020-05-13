@@ -35,8 +35,7 @@ import clientside.Client_Logic;
 public class Controller {
 
 	static int linesofHash = 0;
-	
-	
+
 	public static int actMonth;
 	static String[] month = new String[12];
 	static Controller uicontroller;
@@ -266,7 +265,7 @@ public class Controller {
 
 	@FXML
 	private void buttonDayFour(MouseEvent event) {
-		
+
 		loadUI("4", "sendString");
 	}
 
@@ -304,19 +303,19 @@ public class Controller {
 
 	}
 	// String s = getactualDate() -> aktuelles Datum des Knopfes
-			// getDatenaus HashMap -> Hashmap suchen nach Datum -> Eintrag
-			// getDatenausHashmap soll erst enden, wenn alle Daten die das Datum haben
-			// gelesen wurden.
-			// getDatenausHashmap sortieren nach Stunden und Minuten angezeigt werden muss
-			// eigentlich dann nur noch Stunden:Mintunen (Jahr:Monat:Tag erschließt sich aus
-			// UI)
-			// wir bekommen sendString raus.
-	
-	//----------------------------------------------------Mehotde---------------------
-	//hier werden die Daten geholt!!!!
-	//Übergeben werden muss Jahr/Monat
-	void readValueofHashMap(int Year, int Month){
-		//2020-12
+	// getDatenaus HashMap -> Hashmap suchen nach Datum -> Eintrag
+	// getDatenausHashmap soll erst enden, wenn alle Daten die das Datum haben
+	// gelesen wurden.
+	// getDatenausHashmap sortieren nach Stunden und Minuten angezeigt werden muss
+	// eigentlich dann nur noch Stunden:Mintunen (Jahr:Monat:Tag erschließt sich aus
+	// UI)
+	// wir bekommen sendString raus.
+
+	// ----------------------------------------------------Mehotde---------------------
+	// hier werden die Daten geholt!!!!
+	// Übergeben werden muss Jahr/Monat
+	void readValueofHashMap(int Year, int Month) {
+		// 2020-12
 		HashMap<Integer, String> allEntrys = new HashMap<Integer, String>();
 		allEntrys = Client_Logic.getData();
 		String dateandEntry;
@@ -325,40 +324,31 @@ public class Controller {
 		String[] splitter;
 		String allNote = null;
 		int[] splitints = new int[5];
-		
-		//iterriert die ganze HashMap durch
-		while(allEntrys.containsKey(linesofHash)) {
+
+		// iterriert die ganze HashMap durch
+		while (allEntrys.containsKey(linesofHash)) {
 			dateandEntry = allEntrys.get(linesofHash);
-			splitter = dateandEntry.split("," , 2);
-			date=splitter[0]; note = splitter[1];
+			splitter = dateandEntry.split(",", 2);
+			date = splitter[0];
+			note = splitter[1];
 			splitter = date.split("-");
-			
+
 			for (int i = 0; i < splitter.length; i++) {
 
 				splitints[i] = Integer.parseInt(splitter[i]);
-			}		
-			
-			if(splitints[0]==Year) {
-				if(splitints[1]==Month) {
-					allNote += splitints[3] + ":" + splitints[4] + "\n" + note + "\n\n";
-					
-					
-				}
-				
-				
 			}
-			
-			
-			
+
+			if (splitints[0] == Year) {
+				if (splitints[1] == Month) {
+					allNote += splitints[3] + ":" + splitints[4] + "\n" + note + "\n\n";
+				}
+			}
 			linesofHash++;
-			
 		}
-		loadUI(Integer.toString(splitints[2]), allNote );
-		
-		
+		loadUI(Integer.toString(splitints[2]), allNote);
+
 	}
-	
-	
+
 	public void openDashboard() {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/launcher/fxml/dashboard.fxml"));
