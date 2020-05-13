@@ -26,3 +26,4 @@ Evtl kann auch gleich die HashMap in die Methode rein.... Öffnet ja ein neues el
 Also kann Hashmap nicht direkt geladen werden -> Hashmap wird einzeln ausgelesen (länge integer wissen wir ja)
 
 
+Knopf -> Methode get Date -> z.b 2020.05.02
