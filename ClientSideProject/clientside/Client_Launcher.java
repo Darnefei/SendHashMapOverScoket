@@ -66,13 +66,7 @@ public class Client_Launcher extends Application {
 
 //		if(StartConnection == false) {
 //			System.exit(0);
-//		}
-
-		
-		if(StartConnection == false) {
-			System.exit(0);
-		}
-		
+//		}		
 
 
 		launch(args);
