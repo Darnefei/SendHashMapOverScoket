@@ -220,6 +220,8 @@ public class SQL_Data {
 			st.setString(6, Note);
 			st.setInt(7, getPrimID);
 			st.executeUpdate();
+			
+			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

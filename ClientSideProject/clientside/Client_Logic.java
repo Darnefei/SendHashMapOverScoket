@@ -96,6 +96,7 @@ public class Client_Logic {
 				anzahlZeichen = bufferedReader.read(bufferAppointment, 0, 2000);
 				String nachricht = new String(bufferAppointment, 0, anzahlZeichen);
 
+				System.out.println(nachricht + " " + i);
 				getData.put(i, nachricht);
 
 

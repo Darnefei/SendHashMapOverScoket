@@ -40,8 +40,9 @@ import clientside.Client_Logic;
 
 public class Controller {
 
-	static int linesofHash = 0;
+	static int linesofHash =1;
 
+	static HashMap<Integer, String> allEntrys;
 	public static int actYear;
 	public static int actMonth;
 	static String[] month = new String[12];
@@ -287,10 +288,12 @@ public class Controller {
 		user = username.getText();
 		passw = password.getText();
 		passw2 = confirmPassword.getText();
+
 //
 //		Stage stage = (Stage) signin.getScene().getWindow();
 //		stage.close();
 //		openDashboard();
+
 
 		if (getState.equals("Sign In")) {
 			SignInMethod();
@@ -303,6 +306,7 @@ public class Controller {
 //		Stage stage = (Stage) signin.getScene().getWindow();
 //		stage.close();
 //		openDashboard();
+
 
 
 	}
@@ -527,17 +531,19 @@ public class Controller {
 	// �bergeben werden muss Jahr/Monat
 	void readValueofHashMap(int Year, int Month) {
 		// 2020-12
-		HashMap<Integer, String> allEntrys = new HashMap<Integer, String>();
-		allEntrys = Client_Logic.getData();
+
 		String dateandEntry;
 		String date;
 		String note;
 		String[] splitter;
-		String allNote = null;
+		String allNote = "";
 		int[] splitints = new int[5];
+		System.out.println("hi");
 
 		// iterriert die ganze HashMap durch
 		while (allEntrys.containsKey(linesofHash)) {
+			System.out.println(allEntrys.get(linesofHash));
+			System.out.println("hier");
 			dateandEntry = allEntrys.get(linesofHash);
 			splitter = dateandEntry.split(",", 2);
 			date = splitter[0];
@@ -556,6 +562,7 @@ public class Controller {
 			}
 			linesofHash++;
 		}
+		System.out.println(allNote);
 		loadUI(Integer.toString(splitints[2]), allNote);
 
 	}
@@ -589,6 +596,10 @@ public class Controller {
 	}
 
 	private void getActualMonth() {
+		Client_Logic.sendCommand("data");
+		allEntrys = new HashMap<Integer, String>();
+		allEntrys = Client_Logic.getData();
+		System.out.println("Das ist "+allEntrys);
 		Date date = new Date();
 		SimpleDateFormat formatterMonth = new SimpleDateFormat("MM");
 		SimpleDateFormat formatterYear = new SimpleDateFormat("YYYY");
@@ -697,9 +708,20 @@ public class Controller {
 		String hour = textFieldHour.getText();
 		String min = textFieldMinute.getText();
 		String meetingNamen = meetingName.getText();
-		String hourmin = hour + "-" + min + "," + meetingNamen;
 
-		System.out.println(datum + "-" + hourmin);
+
+		String wholeDate = datum.toString() + "-"+ hour +"-" + min ;
+
+		Client_Logic.sendCommand("newappointment");
+		UserData.put(wholeDate, meetingNamen);
+
+		Client_Logic.sendData(UserData);
+		UserData.remove(wholeDate);
+
+
+
+
+
 
 		Stage stage = (Stage) addMeeting.getScene().getWindow();
 		stage.close();
