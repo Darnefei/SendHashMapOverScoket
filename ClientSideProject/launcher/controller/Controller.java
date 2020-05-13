@@ -534,7 +534,7 @@ public class Controller {
 
 		String dateandEntry;
 		String date;
-		String note;
+		String note = null;
 		String[] splitter;
 		String allNote = "";
 		int[] splitints = new int[5];
@@ -542,13 +542,14 @@ public class Controller {
 
 		// iterriert die ganze HashMap durch
 		while (allEntrys.containsKey(linesofHash)) {
-			System.out.println(allEntrys.get(linesofHash));
-			System.out.println("hier");
+			//System.out.println(allEntrys.get(linesofHash));
+			
 			dateandEntry = allEntrys.get(linesofHash);
 			splitter = dateandEntry.split(",", 2);
 			date = splitter[0];
 			note = splitter[1];
 			splitter = date.split("-");
+			
 
 			for (int i = 0; i < splitter.length; i++) {
 
@@ -561,9 +562,10 @@ public class Controller {
 				}
 			}
 			linesofHash++;
-		}
+		} 
+		linesofHash = 1;
 		System.out.println(allNote);
-		loadUI(Integer.toString(splitints[2]), allNote);
+		//loadUI(Integer.toString(splitints[2]), allNote);
 
 	}
 
