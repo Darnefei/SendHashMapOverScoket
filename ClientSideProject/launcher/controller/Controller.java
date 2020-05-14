@@ -339,7 +339,7 @@ public class Controller {
 
 	@FXML
 	private void buttonDay2(MouseEvent event) {
-		uiButton1.setText("hallo du");
+
 		loadUI("2", "Termin");
 	}
 
@@ -499,8 +499,8 @@ public class Controller {
 
 			uicontrollerloadUI = loader.getController();
 			uicontrollerloadUI.uiButton1.setText(datum);
-			
-			
+
+
 
 			borderpane.setCenter(root);
 		} catch (IOException e) {
@@ -547,13 +547,13 @@ public class Controller {
 		// iterriert die ganze HashMap durch
 		while (allEntrys.containsKey(linesofHash)) {
 			//System.out.println(allEntrys.get(linesofHash));
-			
+
 			dateandEntry = allEntrys.get(linesofHash);
 			splitter = dateandEntry.split(",", 2);
 			date = splitter[0];
 			note = splitter[1];
 			splitter = date.split("-");
-			
+
 
 			for (int i = 0; i < splitter.length; i++) {
 
@@ -566,7 +566,7 @@ public class Controller {
 				}
 			}
 			linesofHash++;
-		} 
+		}
 		linesofHash = 1;
 		System.out.println(allNote);
 		//loadUI(Integer.toString(splitints[2]), allNote);
