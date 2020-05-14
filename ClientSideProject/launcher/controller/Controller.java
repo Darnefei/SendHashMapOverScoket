@@ -338,7 +338,7 @@ public class Controller {
 
 	@FXML
 	private void buttonDay2(MouseEvent event) {
-		uiButton1.setText("hallo du");
+		
 		loadUI("2", "Termin");
 	}
 
