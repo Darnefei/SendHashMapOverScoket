@@ -15,7 +15,7 @@ public class Client_ConnectToServer {
 	
 	public static boolean startConnection() {
 		try {
-			socket = new Socket("91.63.22.17", 7778);
+			socket = new Socket("localhost", 7778);
 			Client_Logic.activateIOStreams(socket);
 			return true;
 		} catch (UnknownHostException e) {

@@ -47,6 +47,7 @@ public class Controller {
 	public static int actMonth;
 	static String[] month = new String[12];
 	static Controller uicontroller;
+	static Controller 	uicontrollerloadUI;
 	static Controller meetingcontroller;
 	Date ds = new Date();
 	String gz = ds.toString();
@@ -456,6 +457,7 @@ public class Controller {
 
 	@FXML
 	void buttonDay30(MouseEvent event) {
+		System.out.println("hi");
 
 	}
 
@@ -495,8 +497,10 @@ public class Controller {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/launcher/fxml/uiButton" + ui + ".fxml"));
 			Parent root = loader.load();
 
-			uicontroller = loader.getController();
-			uicontroller.uiButton1.setText(datum);
+			uicontrollerloadUI = loader.getController();
+			uicontrollerloadUI.uiButton1.setText(datum);
+			
+			
 
 			borderpane.setCenter(root);
 		} catch (IOException e) {
@@ -680,15 +684,9 @@ public class Controller {
 			Parent root = loader.load();
 
 			meetingcontroller = loader.getController();
-			// actuelles Datum auslesen + String -> in die HashMap rein. Aktualisiere Daten
-			// (Knopf)
-			// Senden an Datenbank
+
 
 			setActualDate();
-
-			// actuelles Datum auslesen + String -> in die HashMap rein. Aktualisiere Daten
-			// (Knopf)
-			// Senden an Datenbank
 
 			Stage Meeting = new Stage();
 			Meeting.setScene(new Scene(root));
