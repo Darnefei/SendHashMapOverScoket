@@ -64,8 +64,6 @@ public class Controller {
 
 	@FXML
 	private TextField textFieldHour;
-	
-
 
 	@FXML
 	private Button addMeeting;
@@ -294,7 +292,6 @@ public class Controller {
 		passw = password.getText();
 		passw2 = confirmPassword.getText();
 
-
 		if (getState.equals("Sign In")) {
 			SignInMethod();
 
@@ -302,7 +299,6 @@ public class Controller {
 
 			SignUpMethod();
 		}
-
 
 	}
 
@@ -498,13 +494,13 @@ public class Controller {
 			Parent root = loader.load();
 			if (datum != null && !datum.isEmpty()) {
 
-				//System.out.println(counto + " " + datum);
-				counto++;
+				// System.out.println(counto + " " + datum);
+
 				uicontrollerloadUI = loader.getController();
 
 				switch (ui) {
 				case 1:
-					
+
 					uicontrollerloadUI.uiButton1.setText(datum);
 					uicontroller.buttonDayOne.setStyle("-fx-background-color: #6b97b5;");
 					break;
@@ -561,7 +557,7 @@ public class Controller {
 					uicontroller.buttonDayThirteen.setStyle("-fx-background-color: #6b97b5;");
 					break;
 				case 14:
-					
+
 					uicontrollerloadUI.uiButton14.setText(datum);
 					uicontroller.buttonDayFourteen.setStyle("-fx-background-color: #6b97b5;");
 					break;
@@ -630,14 +626,10 @@ public class Controller {
 					uicontroller.buttonDayThirty.setStyle("-fx-background-color: #6b97b5;");
 					break;
 
-			uicontrollerloadUI = loader.getController();
-
 				}
-				
-				
+
 			}
 
-	
 			borderpane.setCenter(root);
 
 		} catch (IOException e) {
@@ -708,10 +700,9 @@ public class Controller {
 
 			linesofHash++;
 		}
-		
+
 		System.out.println(allNote);
 		// loadUI(Integer.toString(splitints[2]), allNote);
-
 
 		return allNote;
 
@@ -814,16 +805,15 @@ public class Controller {
 
 	public void newMeetingMethod() {
 
-
 		if (meetingcontroller.meetingName.getText().isEmpty() || meetingcontroller.textFieldHour.getText().isEmpty()
 				|| meetingcontroller.textFieldMinute.getText().isEmpty()) {
-			
+
 			String minutess = meetingcontroller.textFieldMinute.getText();
 			int min = Integer.parseInt(minutess);
 			String hourss = meetingcontroller.textFieldHour.getText();
 			int hour = Integer.parseInt(hourss);
 			meetingcontroller.errorLabel.setStyle("-fx-text-fill: red;");
-			if (meetingName.getLength() <1) {
+			if (meetingName.getLength() < 1) {
 				meetingcontroller.errorLabel.setText("Der Termin muss mind. 1 Zeichen enthalten");
 				return;
 			}
@@ -832,7 +822,7 @@ public class Controller {
 				meetingcontroller.errorLabel.setText("Es sind nur Zahlen von 0 bis 23 erlaubt");
 				return;
 			}
-			if (hour<0 || hour>23) {
+			if (hour < 0 || hour > 23) {
 				meetingcontroller.errorLabel.setText("Es sind nur Zahlen von 0 bis 23 erlaubt");
 				return;
 			}
@@ -840,7 +830,7 @@ public class Controller {
 				meetingcontroller.errorLabel.setText("Es sind nur Zahlen von 0 bis 59 erlaubt");
 				return;
 			}
-			if (min>59 || min<0) {
+			if (min > 59 || min < 0) {
 				meetingcontroller.errorLabel.setText("Es sind nur Zahlen von 0 bis 59 erlaubt");
 				return;
 			}
@@ -849,7 +839,7 @@ public class Controller {
 
 	public void setActualDate() {
 		meetingcontroller.datePicker.setValue(LocalDate.now());
-	
+
 	}
 
 	@FXML
@@ -858,34 +848,32 @@ public class Controller {
 		String hour = textFieldHour.getText();
 		String min = textFieldMinute.getText();
 		String meetingNamen = meetingName.getText();
-		
-		
+
 		String wholeDate = datum.toString() + "-" + hour + "-" + min;
 
-	
-		if(hour.equals("") || min.equals("") || meetingNamen.equals("")) {
-			
+		if (hour.equals("") || min.equals("") || meetingNamen.equals("")) {
+
 			return;
-			
+
 		} else if (!min.matches("[0-9]+")) {
-			
+
 			return;
-			
+
 		} else if (!hour.matches("[0-9]+")) {
-			
+
 			return;
-		} 
+		}
 		int hourint = Integer.parseInt(hour);
 		int minint = Integer.parseInt(min);
-		
-		if (!(hourint>0 && hourint<23)) {
-			
+
+		if (!(hourint > 0 && hourint < 23)) {
+
 			return;
-		} else if (!(minint >0 && minint<60)) {
-			
+		} else if (!(minint > 0 && minint < 60)) {
+
 			return;
 		} else {
-			String wholeDate = datum.toString() + "-" + hour + "-" + min;
+
 			Client_Logic.sendCommand("setupnewappointment");
 			UserData.put(wholeDate, meetingNamen);
 			allEntrys.put(linesofHash, wholeDate + "," + meetingNamen);
@@ -896,9 +884,6 @@ public class Controller {
 			Stage stage = (Stage) addMeeting.getScene().getWindow();
 			stage.close();
 		}
-
-			
-
 
 	}
 
@@ -1069,19 +1054,15 @@ public class Controller {
 			Client_Launcher.getDashboardStage().show();
 			// new Client_Launcher().start()(root));
 
-
 		} catch (IOException e) {
 			System.err.println(e);
 		}
 	}
 
-
-
 	void settogray() {
-		
-	
+
 		uicontroller.buttonDayOne.setStyle("-fx-background-color  #6b97b5;");
-		
+
 		uicontroller.buttonDayTwo.setStyle("-fx-background-color  #6b97b5;");
 
 		uicontroller.buttonDayThree.setStyle("-fx-background-color  #6b97b5;");

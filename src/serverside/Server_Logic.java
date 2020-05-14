@@ -66,6 +66,7 @@ public class Server_Logic {
 				checkDataBase = SQL_Data.createEntry(convertedData[0], convertedData[1]);
 			} else if(command.contains("goodbye")) {
 		
+				Server_Launcher.endConnection();
 				System.out.println(command + " Client");
 				return;
 			}

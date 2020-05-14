@@ -15,8 +15,7 @@ public class Client_Launcher extends Application {
 
 	@Override
 	public void init() {
-		System.out.println("Start");
-
+		
 	}
 
 	@Override
@@ -50,6 +49,7 @@ public class Client_Launcher extends Application {
 	@Override
 	public void stop() {
 		System.out.println("Stop");
+		Client_Logic.sendCommand("Servergoodbye");
 	}
 
 	public static void main(String[] args) {

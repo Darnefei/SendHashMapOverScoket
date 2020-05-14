@@ -5,15 +5,17 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 public class Server_Launcher {
+	
+	static Socket socket;
 
 	public static void main(String[] args) throws IOException, ClassNotFoundException {
 
 		ServerSocket ss = Server_Setup.startUpServer();
-
+		
 		while (true) {
 
 			System.out.println("[Server] Wait for Client to connect");
-			Socket socket = ss.accept(); // blocking call, this will wait until a connection is attempted on this port.
+			socket = ss.accept(); // blocking call, this will wait until a connection is attempted on this port.
 			System.out.println("Connection from " + socket + "!");
 			System.out.println("New client connected");
 
@@ -21,6 +23,14 @@ public class Server_Launcher {
 
 		}
 
+	}
+	public static void endConnection(){
+		try {
+			socket.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }

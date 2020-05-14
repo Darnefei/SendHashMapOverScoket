@@ -8,11 +8,10 @@ Termin bearbeiten evtl noch rein
 
 
 Wir brauchen:
-Methode die neuen Termin auch anzeigt
-Methode die Termine überhaupt anzeigt (loadUI muss nochmal geprüft werden)
+
 
 
 EVTL Serverbits erhöhen
 
-Fehler bei new appmoint finden -> ersten 3 Zeichen sind weg -> falscher aufruf irgendwo
+
 
