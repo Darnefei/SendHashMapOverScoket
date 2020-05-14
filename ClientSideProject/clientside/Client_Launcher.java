@@ -1,11 +1,10 @@
 package clientside;
 
 import java.io.IOException;
-import java.util.HashMap;
+
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -29,7 +28,9 @@ public class Client_Launcher extends Application {
 
 		loginStage.setTitle("Kalk20");
 		loginStage.setScene(login);
+		loginStage.setResizable(false);
 		loginStage.show();
+		
 
 		createDashboard();
 

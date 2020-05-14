@@ -1,6 +1,6 @@
 package serverside;
 
-import java.io.IOException;
+
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.sql.*;
@@ -11,7 +11,7 @@ public class SQL_Data {
 	private static String host = "localhost";
 	private static String port = "3306";
 	private static String database = "calender";
-	private static String ssl = "?autoReconnect=true&useSSL=false";
+	
 	private static String username = "superuser";
 	private static String password = "bU}H05KE2Y=.";
 	String noteDate;

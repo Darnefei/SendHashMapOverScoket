@@ -20,10 +20,7 @@ public class Client_Logic {
 	private static char[] bufferAppointment = new char[2000];
 	private static HashMap<Integer, String> getData = new HashMap<Integer, String>();
 
-	private static HashMap<String, String> convertedData = new HashMap<String, String>();
-
-
-	// methode kann gelöscht werden
+	
 	public static void sendCommand(String command) {
 		printWriter.print(command);
 		printWriter.flush();
@@ -70,8 +67,6 @@ public class Client_Logic {
 
 	public static HashMap<Integer, String> getData() {
 
-
-		String[] splitData;
 		int anzahlZeichen;
 		try {
 			// Hier eine schleife machen, damit der Server einzeln die Hashmap senden kann /
@@ -89,8 +84,6 @@ public class Client_Logic {
 
 			length = Integer.parseInt(lengthofMap);
 			System.out.println(length);
-			String[][] dataEntry = new String[length][length];
-			String[] split;
 
 			for (int i = 1; i < length; i++) {
 				anzahlZeichen = bufferedReader.read(bufferAppointment, 0, 2000);

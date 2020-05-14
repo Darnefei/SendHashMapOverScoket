@@ -25,6 +25,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.ScrollBar;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
@@ -33,21 +34,21 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import clientside.FullCalendarView;
 import clientside.Client_HashFunction;
 import clientside.Client_Launcher;
 import clientside.Client_Logic;
 
 public class Controller {
 
-	static int linesofHash =1;
+	int counto = 0;
+	static int linesofHash = 1;
 
 	static HashMap<Integer, String> allEntrys;
 	public static int actYear;
 	public static int actMonth;
 	static String[] month = new String[12];
 	static Controller uicontroller;
-	static Controller 	uicontrollerloadUI;
+	static Controller uicontrollerloadUI;
 	static Controller meetingcontroller;
 	Date ds = new Date();
 	String gz = ds.toString();
@@ -65,6 +66,8 @@ public class Controller {
 
 	@FXML
 	private TextField textFieldHour;
+	
+
 
 	@FXML
 	private Button addMeeting;
@@ -295,7 +298,6 @@ public class Controller {
 //		stage.close();
 //		openDashboard();
 
-
 		if (getState.equals("Sign In")) {
 			SignInMethod();
 
@@ -307,8 +309,6 @@ public class Controller {
 //		Stage stage = (Stage) signin.getScene().getWindow();
 //		stage.close();
 //		openDashboard();
-
-
 
 	}
 
@@ -333,176 +333,317 @@ public class Controller {
 	@FXML
 	private void buttonDay1(MouseEvent event) {
 
-		loadUI("1", "yiipie ei yah");
+		loadUI(1, "");
 
 	}
 
 	@FXML
 	private void buttonDay2(MouseEvent event) {
 
-		loadUI("2", "Termin");
+		loadUI(2, "");
 	}
 
 	@FXML
 	private void buttonDay3(MouseEvent event) {
 
-		loadUI("3", "noch ein termin");
+		loadUI(3, "");
 	}
 
 	@FXML
 	private void buttonDay4(MouseEvent event) {
 
-		loadUI("4", "sendString");
+		loadUI(4, "");
 	}
 
 	@FXML
 	void buttonDay10(MouseEvent event) {
-
+		loadUI(10, "");
 	}
 
 	@FXML
 	void buttonDay11(MouseEvent event) {
-
+		loadUI(11, "");
 	}
 
 	@FXML
 	void buttonDay12(MouseEvent event) {
-
+		loadUI(12, "");
 	}
 
 	@FXML
 	void buttonDay13(MouseEvent event) {
-
+		loadUI(13, "");
 	}
 
 	@FXML
 	void buttonDay14(MouseEvent event) {
-
+		loadUI(14, "");
 	}
 
 	@FXML
 	void buttonDay15(MouseEvent event) {
-
+		loadUI(15, "");
 	}
 
 	@FXML
 	void buttonDay16(MouseEvent event) {
-
+		loadUI(16, "");
 	}
 
 	@FXML
 	void buttonDay17(MouseEvent event) {
-
+		loadUI(17, "");
 	}
 
 	@FXML
 	void buttonDay18(MouseEvent event) {
-
+		loadUI(18, "");
 	}
 
 	@FXML
 	void buttonDay19(MouseEvent event) {
-
+		loadUI(19, "");
 	}
 
 	@FXML
 	void buttonDay20(MouseEvent event) {
-
+		loadUI(20, "");
 	}
 
 	@FXML
 	void buttonDay21(MouseEvent event) {
-
+		loadUI(21, "");
 	}
 
 	@FXML
 	void buttonDay22(MouseEvent event) {
-
+		loadUI(22, "");
 	}
 
 	@FXML
 	void buttonDay23(MouseEvent event) {
-
+		loadUI(23, "");
 	}
 
 	@FXML
 	void buttonDay24(MouseEvent event) {
-
+		loadUI(24, "");
 	}
 
 	@FXML
 	void buttonDay25(MouseEvent event) {
-
+		loadUI(25, "");
 	}
 
 	@FXML
 	void buttonDay26(MouseEvent event) {
-
+		loadUI(26, "");
 	}
 
 	@FXML
 	void buttonDay27(MouseEvent event) {
-
+		loadUI(27, "");
 	}
 
 	@FXML
 	void buttonDay28(MouseEvent event) {
-
+		loadUI(28, "");
 	}
 
 	@FXML
 	void buttonDay29(MouseEvent event) {
-
+		loadUI(29, "");
 	}
 
 	@FXML
 	void buttonDay30(MouseEvent event) {
-		System.out.println("hi");
+		loadUI(30, "");
 
 	}
 
 	@FXML
 	void buttonDay31(MouseEvent event) {
-
+		loadUI(31, "");
 	}
 
 	@FXML
 	void buttonDay5(MouseEvent event) {
-
+		loadUI(5, "");
 	}
 
 	@FXML
 	void buttonDay6(MouseEvent event) {
-
+		loadUI(6, "");
 	}
 
 	@FXML
 	void buttonDay7(MouseEvent event) {
-
+		loadUI(7, "");
 	}
 
 	@FXML
 	void buttonDay8(MouseEvent event) {
-
+		loadUI(8, "");
 	}
 
 	@FXML
 	void buttonDay9(MouseEvent event) {
-
+		loadUI(9, "jo");
 	}
 
-	private void loadUI(String ui, String datum) {
+	@FXML
+	private void loadUI(int ui, String datum) {
+
+		linesofHash = 1;
+
 		try {
+
+			datum = readValueofHashMap(actYear, actMonth + 1, ui);
 
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/launcher/fxml/uiButton" + ui + ".fxml"));
 			Parent root = loader.load();
+			if (datum != null && !datum.isEmpty()) {
 
-			uicontrollerloadUI = loader.getController();
-			uicontrollerloadUI.uiButton1.setText(datum);
+				//System.out.println(counto + " " + datum);
+				counto++;
+				uicontrollerloadUI = loader.getController();
 
+				switch (ui) {
+				case 1:
+					
+					uicontrollerloadUI.uiButton1.setText(datum);
+					uicontroller.buttonDayOne.setStyle("-fx-background-color: #6b97b5;");
+					break;
+				case 2:
+					uicontrollerloadUI.uiButton2.setText(datum);
+					uicontroller.buttonDayTwo.setStyle("-fx-background-color: #6b97b5;");
+					break;
+				case 3:
+					uicontrollerloadUI.uiButton3.setText(datum);
+					uicontroller.buttonDayThree.setStyle("-fx-background-color: #6b97b5;");
+					break;
+				case 4:
+					uicontrollerloadUI.uiButton4.setText(datum);
+					uicontroller.buttonDayFour.setStyle("-fx-background-color: #6b97b5;");
+					break;
+				case 5:
+					uicontrollerloadUI.uiButton5.setText(datum);
+					uicontroller.buttonDayFive.setStyle("-fx-background-color: #6b97b5;");
+					break;
+				case 6:
+					uicontrollerloadUI.uiButton6.setText(datum);
+					uicontroller.buttonDaySix.setStyle("-fx-background-color: #6b97b5;");
+					break;
+				case 31:
+					uicontrollerloadUI.uiButton31.setText(datum);
+					uicontroller.buttonDayThirtyOne.setStyle("-fx-background-color: #6b97b5;");
+					break;
+				case 7:
+					uicontrollerloadUI.uiButton7.setText(datum);
+					uicontroller.buttonDaySeven.setStyle("-fx-background-color: #6b97b5;");
+					break;
+				case 9:
+					uicontrollerloadUI.uiButton9.setText(datum);
+					uicontroller.buttonDayNine.setStyle("-fx-background-color: #6b97b5;");
+					break;
+				case 8:
+					uicontrollerloadUI.uiButton8.setText(datum);
+					uicontroller.buttonDayEight.setStyle("-fx-background-color: #6b97b5;");
+					break;
+				case 10:
+					uicontrollerloadUI.uiButton10.setText(datum);
+					uicontroller.buttonDayTen.setStyle("-fx-background-color: #6b97b5;");
+					break;
+				case 11:
+					uicontrollerloadUI.uiButton11.setText(datum);
+					uicontroller.buttonDayEleven.setStyle("-fx-background-color: #6b97b5;");
+					break;
+				case 12:
+					uicontrollerloadUI.uiButton12.setText(datum);
+					uicontroller.buttonDayTwelve.setStyle("-fx-background-color: #6b97b5;");
+					break;
+				case 13:
+					uicontrollerloadUI.uiButton13.setText(datum);
+					uicontroller.buttonDayThirteen.setStyle("-fx-background-color: #6b97b5;");
+					break;
+				case 14:
+					
+					uicontrollerloadUI.uiButton14.setText(datum);
+					uicontroller.buttonDayFourteen.setStyle("-fx-background-color: #6b97b5;");
+					break;
+				case 15:
+					uicontrollerloadUI.uiButton15.setText(datum);
+					uicontroller.buttonDayFifteen.setStyle("-fx-background-color: #6b97b5;");
+					break;
+				case 16:
+					uicontrollerloadUI.uiButton16.setText(datum);
+					uicontroller.buttonDaySixteen.setStyle("-fx-background-color: #6b97b5;");
+					break;
+				case 17:
+					uicontrollerloadUI.uiButton17.setText(datum);
+					uicontroller.buttonDaySeventeen.setStyle("-fx-background-color: #6b97b5;");
+					break;
+				case 18:
+					uicontrollerloadUI.uiButton18.setText(datum);
+					uicontroller.buttonDayEighteen.setStyle("-fx-background-color: #6b97b5;");
+					break;
+				case 19:
+					uicontrollerloadUI.uiButton19.setText(datum);
+					uicontroller.buttonDayNineteen.setStyle("-fx-background-color: #6b97b5;");
+					break;
+				case 20:
+					uicontrollerloadUI.uiButton20.setText(datum);
+					uicontroller.buttonDayTwenty.setStyle("-fx-background-color: #6b97b5;");
+					break;
+				case 21:
+					uicontrollerloadUI.uiButton21.setText(datum);
+					uicontroller.buttonDayTwentyOne.setStyle("-fx-background-color: #6b97b5;");
+					break;
+				case 22:
+					uicontrollerloadUI.uiButton22.setText(datum);
+					uicontroller.buttonDayTwentyTwo.setStyle("-fx-background-color: #6b97b5;");
+					break;
+				case 23:
+					uicontrollerloadUI.uiButton23.setText(datum);
+					uicontroller.buttonDayTwentyThree.setStyle("-fx-background-color: #6b97b5;");
+					break;
+				case 24:
+					uicontrollerloadUI.uiButton24.setText(datum);
+					uicontroller.buttonDayTwentyFour.setStyle("-fx-background-color: #6b97b5;");
+					break;
+				case 25:
+					uicontrollerloadUI.uiButton25.setText(datum);
+					uicontroller.buttonDayTwentyFive.setStyle("-fx-background-color: #6b97b5;");
+					break;
+				case 26:
+					uicontrollerloadUI.uiButton26.setText(datum);
+					uicontroller.buttonDayTwentySix.setStyle("-fx-background-color: #6b97b5;");
+					break;
+				case 27:
+					uicontrollerloadUI.uiButton27.setText(datum);
+					uicontroller.buttonDayTwentySeven.setStyle("-fx-background-color: #6b97b5;");
+					break;
+				case 28:
+					uicontrollerloadUI.uiButton28.setText(datum);
+					uicontroller.buttonDayTwentyEight.setStyle("-fx-background-color: #6b97b5;");
+					break;
+				case 29:
+					uicontrollerloadUI.uiButton29.setText(datum);
+					uicontroller.buttonDayTwentyNine.setStyle("-fx-background-color: #6b97b5;");
+					break;
+				case 30:
+					uicontrollerloadUI.uiButton30.setText(datum);
+					uicontroller.buttonDayThirty.setStyle("-fx-background-color: #6b97b5;");
+					break;
 
+				}
+				
+				
+			} else {
 
+			}
 			borderpane.setCenter(root);
+
 		} catch (IOException e) {
 
 			System.out.println(e);
@@ -533,7 +674,7 @@ public class Controller {
 	// ----------------------------------------------------Mehotde---------------------
 	// hier werden die Daten geholt!!!!
 	// �bergeben werden muss Jahr/Monat
-	void readValueofHashMap(int Year, int Month) {
+	String readValueofHashMap(int Year, int Month, int Day) {
 		// 2020-12
 
 		String dateandEntry;
@@ -542,18 +683,16 @@ public class Controller {
 		String[] splitter;
 		String allNote = "";
 		int[] splitints = new int[5];
-		System.out.println("hi");
 
 		// iterriert die ganze HashMap durch
 		while (allEntrys.containsKey(linesofHash)) {
-			//System.out.println(allEntrys.get(linesofHash));
+			// System.out.println(allEntrys.get(linesofHash));
 
 			dateandEntry = allEntrys.get(linesofHash);
 			splitter = dateandEntry.split(",", 2);
 			date = splitter[0];
 			note = splitter[1];
 			splitter = date.split("-");
-
 
 			for (int i = 0; i < splitter.length; i++) {
 
@@ -562,50 +701,29 @@ public class Controller {
 
 			if (splitints[0] == Year) {
 				if (splitints[1] == Month) {
-					allNote += splitints[3] + ":" + splitints[4] + "\n" + note + "\n\n";
+					if (splitints[2] == Day) {
+
+						allNote += "\t" + splitints[3] + ":" + splitints[4] + "\n\t" + note + "\n\n";
+					}
+
 				}
+
 			}
+
 			linesofHash++;
 		}
-		linesofHash = 1;
-		System.out.println(allNote);
-		//loadUI(Integer.toString(splitints[2]), allNote);
 
-	}
+		return allNote;
 
-	public void openDashboard() {
-		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/launcher/fxml/dashboard.fxml"));
-			Parent root = loader.load();
-			uicontroller = loader.getController();
-
-			/*
-			 * FXMLLoader lloader = new
-			 * FXMLLoader(getClass().getResource("/launcher/fxml/uiButton3.fxml"));
-			 * Controller uuicontroller = lloader.getController();
-			 * uuicontroller.uiButtonThree.setText("");
-			 *
-			 * if(uiButtonThree.getText().equals("")) {
-			 * buttonDayThree.setStyle("-fx-border-color: red"); }
-			 */
-			getMonths();
-			getActualMonth();
-			getDaysperMonth();
-
-			// new Client_Launcher().start()(root));
-			Client_Launcher.getDashboardStage().setScene(new Scene(root));
-			Client_Launcher.getDashboardStage().show();
-
-		} catch (IOException e) {
-			System.err.println(e);
-		}
 	}
 
 	private void getActualMonth() {
 		Client_Logic.sendCommand("data");
 		allEntrys = new HashMap<Integer, String>();
 		allEntrys = Client_Logic.getData();
-		System.out.println("Das ist "+allEntrys);
+		
+
+		// System.out.println("Das ist "+allEntrys);
 		Date date = new Date();
 		SimpleDateFormat formatterMonth = new SimpleDateFormat("MM");
 		SimpleDateFormat formatterYear = new SimpleDateFormat("YYYY");
@@ -614,7 +732,7 @@ public class Controller {
 		actMonth = Integer.parseInt(actualMonth) - 1;
 		actYear = Integer.parseInt(actualYear);
 
-		System.out.println(actualYear);
+		// System.out.println(actualYear);
 
 		uicontroller.actualDate.setText(month[actMonth]);
 
@@ -646,7 +764,7 @@ public class Controller {
 		case "September":
 		case "November":
 
-			System.out.println("Es ist " + month);
+			// System.out.println("Es ist " + month);
 			uicontroller.buttonDayThirty.setDisable(false);
 			uicontroller.buttonDayThirty.setVisible(true);
 			uicontroller.buttonDayTwentyNine.setDisable(false);
@@ -656,7 +774,7 @@ public class Controller {
 			break;
 
 		case "February":
-			System.out.println("Es ist " + month);
+			// System.out.println("Es ist " + month);
 			uicontroller.buttonDayThirtyOne.setDisable(true);
 			uicontroller.buttonDayThirtyOne.setVisible(false);
 			uicontroller.buttonDayThirty.setDisable(true);
@@ -685,7 +803,6 @@ public class Controller {
 
 			meetingcontroller = loader.getController();
 
-
 			setActualDate();
 
 			Stage Meeting = new Stage();
@@ -700,6 +817,7 @@ public class Controller {
 
 	public void setActualDate() {
 		meetingcontroller.datePicker.setValue(LocalDate.now());
+	
 	}
 
 	@FXML
@@ -709,19 +827,19 @@ public class Controller {
 		String min = textFieldMinute.getText();
 		String meetingNamen = meetingName.getText();
 
+		String wholeDate = datum.toString() + "-" + hour + "-" + min;
 
-		String wholeDate = datum.toString() + "-"+ hour +"-" + min ;
-
-		Client_Logic.sendCommand("newappointment");
+		Client_Logic.sendCommand("setupnewappointment");
 		UserData.put(wholeDate, meetingNamen);
 
+		
+	
+		//System.out.println(linesofHash);
+		allEntrys.put(linesofHash, wholeDate + "," + meetingNamen);
+
+		linesofHash++;
 		Client_Logic.sendData(UserData);
 		UserData.remove(wholeDate);
-
-
-
-
-
 
 		Stage stage = (Stage) addMeeting.getScene().getWindow();
 		stage.close();
@@ -737,9 +855,13 @@ public class Controller {
 		} else {
 			actMonth += 1;
 		}
+		settogray();
 		actualDate.setText(month[actMonth]);
 		getDaysperMonth();
-		readValueofHashMap(actYear, actMonth);
+		for (int i = 1; i <= 31; i++) {
+			loadUI(i, "");
+		}
+		// readValueofHashMap(actYear, actMonth);
 
 	}
 
@@ -753,9 +875,13 @@ public class Controller {
 			actMonth -= 1;
 		}
 
+		settogray();
 		actualDate.setText(month[actMonth]);
 		getDaysperMonth();
-		readValueofHashMap(actYear, actMonth);
+		for (int i = 1; i <= 31; i++) {
+			loadUI(i, "");
+		}
+		// readValueofHashMap(actYear, actMonth);
 	}
 
 	private void SignUpMethod() {
@@ -864,4 +990,101 @@ public class Controller {
 
 	}
 
+	public void openDashboard() {
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/launcher/fxml/dashboard.fxml"));
+			Parent root = loader.load();
+			uicontroller = loader.getController();
+
+			/*
+			 * FXMLLoader lloader = new
+			 * FXMLLoader(getClass().getResource("/launcher/fxml/uiButton3.fxml"));
+			 * Controller uuicontroller = lloader.getController();
+			 * uuicontroller.uiButtonThree.setText("");
+			 *
+			 * if(uiButtonThree.getText().equals("")) {
+			 * buttonDayThree.setStyle("-fx-border-color: red"); }
+			 */
+			getMonths();
+			getActualMonth();
+			getDaysperMonth();
+
+			Client_Launcher.getDashboardStage().setScene(new Scene(root));
+			Client_Launcher.getDashboardStage().show();
+			// new Client_Launcher().start()(root));
+
+
+		} catch (IOException e) {
+			System.err.println(e);
+		}
+	}
+
+
+
+	void settogray() {
+		
+	
+		uicontroller.buttonDayOne.setStyle("-fx-background-color  #6b97b5;");
+		
+		uicontroller.buttonDayTwo.setStyle("-fx-background-color  #6b97b5;");
+
+		uicontroller.buttonDayThree.setStyle("-fx-background-color  #6b97b5;");
+
+		uicontroller.buttonDayFour.setStyle("-fx-background-color  #6b97b5;");
+
+		uicontroller.buttonDayFive.setStyle("-fx-background-color  #6b97b5;");
+
+		uicontroller.buttonDaySix.setStyle("-fx-background-color  #6b97b5;");
+
+		uicontroller.buttonDayThirtyOne.setStyle("-fx-background-color  #6b97b5;");
+
+		uicontroller.buttonDaySeven.setStyle("-fx-background-color  #6b97b5;");
+
+		uicontroller.buttonDayNine.setStyle("-fx-background-color  #6b97b5;");
+
+		uicontroller.buttonDayEight.setStyle("-fx-background-color  #6b97b5;");
+
+		uicontroller.buttonDayTen.setStyle("-fx-background-color  #6b97b5;");
+
+		uicontroller.buttonDayEleven.setStyle("-fx-background-color  #6b97b5;");
+
+		uicontroller.buttonDayTwelve.setStyle("-fx-background-color  #6b97b5;");
+
+		uicontroller.buttonDayThirteen.setStyle("-fx-background-color  #6b97b5;");
+
+		uicontroller.buttonDayFourteen.setStyle("-fx-background-color  #6b97b5;");
+
+		uicontroller.buttonDayFifteen.setStyle("-fx-background-color  #6b97b5;");
+
+		uicontroller.buttonDaySixteen.setStyle("-fx-background-color  #6b97b5;");
+
+		uicontroller.buttonDaySeventeen.setStyle("-fx-background-color  #6b97b5;");
+
+		uicontroller.buttonDayEighteen.setStyle("-fx-background-color  #6b97b5;");
+
+		uicontroller.buttonDayNineteen.setStyle("-fx-background-color  #6b97b5;");
+
+		uicontroller.buttonDayTwenty.setStyle("-fx-background-color  #6b97b5;");
+
+		uicontroller.buttonDayTwentyOne.setStyle("-fx-background-color  #6b97b5;");
+
+		uicontroller.buttonDayTwentyTwo.setStyle("-fx-background-color  #6b97b5;");
+
+		uicontroller.buttonDayTwentyThree.setStyle("-fx-background-color  #6b97b5;");
+
+		uicontroller.buttonDayTwentyFour.setStyle("-fx-background-color  #6b97b5;");
+
+		uicontroller.buttonDayTwentyFive.setStyle("-fx-background-color  #6b97b5;");
+
+		uicontroller.buttonDayTwentySix.setStyle("-fx-background-color  #6b97b5;");
+
+		uicontroller.buttonDayTwentySeven.setStyle("-fx-background-color  #6b97b5;");
+
+		uicontroller.buttonDayTwentyEight.setStyle("-fx-background-color  #6b97b5;");
+
+		uicontroller.buttonDayTwentyNine.setStyle("-fx-background-color  #6b97b5;");
+
+		uicontroller.buttonDayThirty.setStyle("-fx-background-color  #6b97b5;");
+
+	}
 }

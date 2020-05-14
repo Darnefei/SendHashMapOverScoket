@@ -12,7 +12,6 @@ import java.util.HashMap;
 
 public class Server_Logic {
 	private static final char[] Clientready = new char[2];
-	private static Socket socket;
 	static char[] bufferCommand = new char[20];
 	static char[] bufferData = new char[2047];
 	static BufferedReader bufferedReader;
@@ -35,8 +34,6 @@ public class Server_Logic {
 
 	// executes the coommand
 	public static void executeCommand(String command) {
-		int i = 0;
-
 		if (command.equals("data")) {
 			System.out.println(command);
 			sendData();
@@ -48,18 +45,13 @@ public class Server_Logic {
 			String[] convertedData = readData();
 			boolean checkDataBase = false;
 
-			switch (command) {
+			 
 
 			// Login, Registration, newappointment = Boolean zum senden
 			// data = HashMap
-			case "login":
-
+			if (command.equals("login")) {
 				checkDataBase = SQL_Data.checkLogin(convertedData[0], convertedData[1]);
-
-				break;
-
-			case "registration":
-
+			} else if (command.equals("registration")) {
 				try {
 					checkDataBase = SQL_Data.createAccount(convertedData[0], convertedData[1]);
 				} catch (NoSuchAlgorithmException e) {
@@ -69,17 +61,21 @@ public class Server_Logic {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-
-				break;
-			case "newappointment":
+				
+			} else if(command.contains("newappointment")) {
 				checkDataBase = SQL_Data.createEntry(convertedData[0], convertedData[1]);
-				break;
-
-			case "goodbye":
+			} else if(command.contains("goodbye")) {
+		
 				System.out.println(command + " Client");
 				return;
-
 			}
+
+			
+				
+
+			
+
+			
 			System.out.println(checkDataBase);
 			printWriter.print(checkDataBase);
 			printWriter.flush();
