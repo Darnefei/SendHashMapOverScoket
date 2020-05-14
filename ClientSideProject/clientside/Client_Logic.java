@@ -109,7 +109,7 @@ public class Client_Logic {
 
 			}
 
-			
+			System.out.println(getData);
 			System.out.println("geschafft");
 			return getData;
 

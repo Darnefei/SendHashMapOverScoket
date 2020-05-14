@@ -40,14 +40,14 @@ import clientside.Client_Logic;
 
 public class Controller {
 
-	static int linesofHash =1;
+	static int linesofHash = 1;
 
 	static HashMap<Integer, String> allEntrys;
 	public static int actYear;
 	public static int actMonth;
 	static String[] month = new String[12];
 	static Controller uicontroller;
-	static Controller 	uicontrollerloadUI;
+	static Controller uicontrollerloadUI;
 	static Controller meetingcontroller;
 	Date ds = new Date();
 	String gz = ds.toString();
@@ -282,6 +282,9 @@ public class Controller {
 	private Label tagesansicht;
 
 	@FXML
+	private AnchorPane closePane;
+
+	@FXML
 	void login(ActionEvent event) {
 
 		getState = buttonLogin.getText();
@@ -289,12 +292,6 @@ public class Controller {
 		user = username.getText();
 		passw = password.getText();
 		passw2 = confirmPassword.getText();
-
-//
-//		Stage stage = (Stage) signin.getScene().getWindow();
-//		stage.close();
-//		openDashboard();
-
 
 		if (getState.equals("Sign In")) {
 			SignInMethod();
@@ -307,8 +304,6 @@ public class Controller {
 //		Stage stage = (Stage) signin.getScene().getWindow();
 //		stage.close();
 //		openDashboard();
-
-
 
 	}
 
@@ -500,8 +495,6 @@ public class Controller {
 			uicontrollerloadUI = loader.getController();
 			uicontrollerloadUI.uiButton1.setText(datum);
 
-
-
 			borderpane.setCenter(root);
 		} catch (IOException e) {
 
@@ -546,14 +539,13 @@ public class Controller {
 
 		// iterriert die ganze HashMap durch
 		while (allEntrys.containsKey(linesofHash)) {
-			//System.out.println(allEntrys.get(linesofHash));
+			// System.out.println(allEntrys.get(linesofHash));
 
 			dateandEntry = allEntrys.get(linesofHash);
 			splitter = dateandEntry.split(",", 2);
 			date = splitter[0];
 			note = splitter[1];
 			splitter = date.split("-");
-
 
 			for (int i = 0; i < splitter.length; i++) {
 
@@ -569,7 +561,7 @@ public class Controller {
 		}
 		linesofHash = 1;
 		System.out.println(allNote);
-		//loadUI(Integer.toString(splitints[2]), allNote);
+		// loadUI(Integer.toString(splitints[2]), allNote);
 
 	}
 
@@ -605,7 +597,7 @@ public class Controller {
 		Client_Logic.sendCommand("data");
 		allEntrys = new HashMap<Integer, String>();
 		allEntrys = Client_Logic.getData();
-		System.out.println("Das ist "+allEntrys);
+		System.out.println("Das ist " + allEntrys);
 		Date date = new Date();
 		SimpleDateFormat formatterMonth = new SimpleDateFormat("MM");
 		SimpleDateFormat formatterYear = new SimpleDateFormat("YYYY");
@@ -685,7 +677,7 @@ public class Controller {
 
 			meetingcontroller = loader.getController();
 
-
+			
 			setActualDate();
 
 			Stage Meeting = new Stage();
@@ -695,6 +687,41 @@ public class Controller {
 
 		} catch (IOException e) {
 			System.err.println(e);
+		}
+	}
+
+	public void newMeetingMethod() {
+
+
+		if (meetingcontroller.meetingName.getText().isEmpty() || meetingcontroller.textFieldHour.getText().isEmpty()
+				|| meetingcontroller.textFieldMinute.getText().isEmpty()) {
+			
+			String minutess = meetingcontroller.textFieldMinute.getText();
+			int min = Integer.parseInt(minutess);
+			String hourss = meetingcontroller.textFieldHour.getText();
+			int hour = Integer.parseInt(hourss);
+			meetingcontroller.errorLabel.setStyle("-fx-text-fill: red;");
+			if (meetingName.getLength() <1) {
+				meetingcontroller.errorLabel.setText("Der Termin muss mind. 1 Zeichen enthalten");
+				return;
+			}
+			// if .length
+			if (meetingcontroller.textFieldHour.getText().matches("[0-9]+")) {
+				meetingcontroller.errorLabel.setText("Es sind nur Zahlen von 0 bis 23 erlaubt");
+				return;
+			}
+			if (hour<0 || hour>23) {
+				meetingcontroller.errorLabel.setText("Es sind nur Zahlen von 0 bis 23 erlaubt");
+				return;
+			}
+			if (meetingcontroller.textFieldMinute.getText().matches("[0-9]+")) {
+				meetingcontroller.errorLabel.setText("Es sind nur Zahlen von 0 bis 59 erlaubt");
+				return;
+			}
+			if (min>59 || min<0) {
+				meetingcontroller.errorLabel.setText("Es sind nur Zahlen von 0 bis 59 erlaubt");
+				return;
+			}
 		}
 	}
 
@@ -708,23 +735,45 @@ public class Controller {
 		String hour = textFieldHour.getText();
 		String min = textFieldMinute.getText();
 		String meetingNamen = meetingName.getText();
+		
+		
+		String wholeDate = datum.toString() + "-" + hour + "-" + min;
 
+	
+		if(hour.equals("") || min.equals("") || meetingNamen.equals("")) {
+			
+			return;
+			
+		} else if (!min.matches("[0-9]+")) {
+			
+			return;
+			
+		} else if (!hour.matches("[0-9]+")) {
+			
+			return;
+		} 
+		int hourint = Integer.parseInt(hour);
+		int minint = Integer.parseInt(min);
+		
+		if (!(hourint>0 && hourint<23)) {
+			
+			return;
+		} else if (!(minint >0 && minint<60)) {
+			
+			return;
+		} else {
+			Client_Logic.sendCommand("newappointment");
+			UserData.put(wholeDate, meetingNamen);
 
-		String wholeDate = datum.toString() + "-"+ hour +"-" + min ;
+			Client_Logic.sendData(UserData);
+			UserData.remove(wholeDate);
 
-		Client_Logic.sendCommand("newappointment");
-		UserData.put(wholeDate, meetingNamen);
-
-		Client_Logic.sendData(UserData);
-		UserData.remove(wholeDate);
-
-
-
-
-
-
-		Stage stage = (Stage) addMeeting.getScene().getWindow();
-		stage.close();
+			Stage stage = (Stage) addMeeting.getScene().getWindow();
+			stage.close();
+		}
+		
+		
+		
 
 	}
 

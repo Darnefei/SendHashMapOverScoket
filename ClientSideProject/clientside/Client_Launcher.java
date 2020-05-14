@@ -29,6 +29,7 @@ public class Client_Launcher extends Application {
 
 		loginStage.setTitle("Kalk20");
 		loginStage.setScene(login);
+		loginStage.setResizable(false);
 		loginStage.show();
 
 		createDashboard();
