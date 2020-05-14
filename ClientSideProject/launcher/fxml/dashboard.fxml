@@ -87,6 +87,11 @@
                      
                   </BorderPane>
                </children>
+
+             
+
+ </children>
+
             </AnchorPane>
         </items>
       </SplitPane>
