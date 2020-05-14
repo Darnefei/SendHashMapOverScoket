@@ -496,7 +496,9 @@ public class Controller {
 			Parent root = loader.load();
 
 			uicontroller = loader.getController();
+			if(ui.equals("1")) {
 			uicontroller.uiButton1.setText(datum);
+			}
 
 			borderpane.setCenter(root);
 		} catch (IOException e) {
