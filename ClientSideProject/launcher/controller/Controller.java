@@ -32,21 +32,21 @@ import clientside.Client_Logic;
 
 /*
  * In der Controllerklasse werden alle Scenes und Buttons aufgerufen und initalisiert
- * Zudem sind hier die Methoden zu den Knöpfen und zur sonstigen UI-Logic programmiert
+ * Zudem sind hier die Methoden zu den Knï¿½pfen und zur sonstigen UI-Logic programmiert
  * Wichtige Methoden hierbei sind:
- * 
+ *
  * SignIn() und SignUp() um einen Nutzer einzuloggen oder zu registrieren
- * 
- * loadUI ( int , String )  ->  fügt den Kalendertagen die zugehörigen Daten hinzu indem diese die 
+ *
+ * loadUI ( int , String )  ->  fï¿½gt den Kalendertagen die zugehï¿½rigen Daten hinzu indem diese die
  * Methode readValueofHashMap ( int Year, int Month, int Day) um den Terminstring des aktuellen Tages zu bekommen
- * 
+ *
  * In der getActualMonth() Methode wird beim ersten mal einloggen das UI neu geladen.
- * 
+ *
  * Durch openNewMeeting() kann ein neuer Termin angelegt werden.
- * 
- * Die meisten anderen Methoden sind zuständig, um mit den verschiedenen Monaten und Jahren zu interagieren.
- * 
- * 
+ *
+ * Die meisten anderen Methoden sind zustï¿½ndig, um mit den verschiedenen Monaten und Jahren zu interagieren.
+ *
+ *
  */
 
 public class Controller {
@@ -820,7 +820,7 @@ public class Controller {
 		String wholeDate = datum.toString() + "-" + hour + "-" + min;
 
 		if (hour.equals("") || min.equals("") || meetingNamen.equals("")) {
-			errorLabel1.setText("Bitte alle Felder befüllen");
+			errorLabel1.setText("Bitte alle Felder befï¿½llen");
 
 			return;
 
