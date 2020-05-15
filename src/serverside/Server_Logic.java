@@ -10,14 +10,36 @@ import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.util.HashMap;
 
+/**
+ * @author MaierL
+ * Logic der Serverklasse
+ */
 public class Server_Logic {
+	/**
+	 * 
+	 */
 	private static final char[] Clientready = new char[2];
+	/**
+	 * 
+	 */
 	static char[] bufferCommand = new char[20];
+	/**
+	 * 
+	 */
 	static char[] bufferData = new char[2047];
+	/**
+	 * 
+	 */
 	static BufferedReader bufferedReader;
+	/**
+	 * 
+	 */
 	static PrintWriter printWriter;
 
-	// reads the send command from the Client
+	/**
+	 * Liest das Kommando vom Clienten: data, newaapointment, login, registration,goodbye
+	 * @return gibt das Kommando vom Clienten zurück
+	 */
 	public static String readCommand() {
 
 		try {
@@ -33,6 +55,10 @@ public class Server_Logic {
 	}
 
 	// executes the coommand
+	/**
+	 * Führt die verschiedenen SQL_Mehoden aus, je nach Empfangenen Kommando vom Clienten
+	 * @param command Kommando das Empfangen wurde von readCommand
+	 */
 	public static void executeCommand(String command) {
 		if (command.equals("data")) {
 			System.out.println(command);
@@ -89,9 +115,13 @@ public class Server_Logic {
 
 	// Sendet alles einträge für den Nutzer
 
+	/**
+	 * Methode zum senden der Daten, je nachdem welcher Befehl empfangen wurde
+	 */
 	private static void sendData() {
 		SQL_Data sql = new SQL_Data();
 		try {
+	
 			HashMap<Integer, String> dataMap = sql.getData();
 
 			printWriter.print(dataMap.size());
@@ -141,6 +171,11 @@ public class Server_Logic {
 
 	}
 
+	/**
+	 * Liest die Nachricht des Clients ein
+	 * 
+	 * @return löscht unnötige Zeichen und gibt eine String zurück
+	 */
 	private static String[] readData() {
 		String nachricht;
 		int anzahlZeichen;
@@ -167,6 +202,10 @@ public class Server_Logic {
 
 	}
 
+	/**
+	 * Reader und Writer werden für Socket geöffnet
+	 * @param socket Socket der Übergeben wird
+	 */
 	public static void activateIOStreams(Socket socket) {
 		try {
 			bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));

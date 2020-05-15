@@ -9,15 +9,28 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/**
+ * @author MaierL
+ *
+ */
 public class Client_Launcher extends Application {
 
+	/**
+	 * globalbe Stage dashboardStage
+	 */
 	private static Stage dashboardStage = null;
 
+	/**
+	 * not used
+	 */
 	@Override
 	public void init() {
 		
 	}
 
+	/**
+	 *Stage launcher wird aufgebaut
+	 */
 	@Override
 	public void start(Stage loginStage) throws IOException {
 
@@ -35,6 +48,9 @@ public class Client_Launcher extends Application {
 
 	}
 
+	/**
+	 * baut das aeußere Dashbaord auf
+	 */
 	public static void createDashboard() {
 
 		dashboardStage = new Stage();
@@ -42,16 +58,28 @@ public class Client_Launcher extends Application {
 
 	}
 
+	/**
+	 * Gibt die Stage zurueck
+	 * @return gibt die Stage zurueck
+	 */
 	public static Stage getDashboardStage() {
 		return dashboardStage;
 	}
 
+	/**
+	 * Stop die Applikation
+	 */
 	@Override
 	public void stop() {
 		System.out.println("Stop");
 		Client_Logic.sendCommand("Servergoodbye");
+		
 	}
 
+	/**
+	 * main die die Method StartConnection und die UI aufruft
+	 * @param args für JavaFx
+	 */
 	public static void main(String[] args) {
 
 //
