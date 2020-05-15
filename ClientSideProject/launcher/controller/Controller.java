@@ -29,7 +29,6 @@ import javafx.stage.Stage;
 import clientside.Client_HashFunction;
 import clientside.Client_Launcher;
 import clientside.Client_Logic;
-import clientside.WeatherFetcher;
 
 /*
  * In der Controllerklasse werden alle Scenes und Buttons aufgerufen und initalisiert
@@ -82,6 +81,7 @@ public class Controller {
 
 	@FXML
 	private Label errorLabel1;
+
 	@FXML
 	private Button addMeeting;
 
@@ -111,9 +111,6 @@ public class Controller {
 
 	@FXML
 	private PasswordField confirmPassword;
-
-	@FXML
-	private Label weatherData;
 
 	@FXML
 	private Label actualDate = new Label();
@@ -293,9 +290,6 @@ public class Controller {
 
 	@FXML
 	private BorderPane borderpane = new BorderPane();
-
-	@FXML
-	private Label tagesansicht;
 
 	@FXML
 	private AnchorPane closePane;
@@ -495,7 +489,7 @@ public class Controller {
 
 	@FXML
 	void buttonDay9(MouseEvent event) {
-		loadUI(9, "jo");
+		loadUI(9, "");
 	}
 
 	@FXML
@@ -510,8 +504,6 @@ public class Controller {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/launcher/fxml/uiButton" + ui + ".fxml"));
 			Parent root = loader.load();
 			if (datum != null && !datum.isEmpty()) {
-
-				// System.out.println(counto + " " + datum);
 
 				uicontrollerloadUI = loader.getController();
 
@@ -668,7 +660,6 @@ public class Controller {
 	}
 
 	String readValueofHashMap(int Year, int Month, int Day) {
-		
 
 		String dateandEntry;
 		String date;
@@ -705,8 +696,6 @@ public class Controller {
 
 			linesofHash++;
 		}
-
-		System.out.println(allNote);
 
 		return allNote;
 
@@ -767,22 +756,22 @@ public class Controller {
 			break;
 
 		case "February":
-			if(actYear%4==0) {
+			if (actYear % 4 == 0) {
 				uicontroller.buttonDayThirtyOne.setDisable(true);
 				uicontroller.buttonDayThirtyOne.setVisible(false);
 				uicontroller.buttonDayThirty.setDisable(true);
 				uicontroller.buttonDayThirty.setVisible(false);
 				uicontroller.buttonDayTwentyNine.setDisable(false);
 				uicontroller.buttonDayTwentyNine.setVisible(true);
-				
+
 			} else {
-			uicontroller.buttonDayThirtyOne.setDisable(true);
-			uicontroller.buttonDayThirtyOne.setVisible(false);
-			uicontroller.buttonDayThirty.setDisable(true);
-			uicontroller.buttonDayThirty.setVisible(false);
-			uicontroller.buttonDayTwentyNine.setDisable(true);
-			uicontroller.buttonDayTwentyNine.setVisible(false);
-			break;
+				uicontroller.buttonDayThirtyOne.setDisable(true);
+				uicontroller.buttonDayThirtyOne.setVisible(false);
+				uicontroller.buttonDayThirty.setDisable(true);
+				uicontroller.buttonDayThirty.setVisible(false);
+				uicontroller.buttonDayTwentyNine.setDisable(true);
+				uicontroller.buttonDayTwentyNine.setVisible(false);
+				break;
 			}
 		}
 
@@ -791,11 +780,6 @@ public class Controller {
 	@FXML
 	void newMeeting(MouseEvent event) {
 		openNewMeeting();
-	}
-
-	@FXML
-	void editMeeting(MouseEvent event) {
-
 	}
 
 	public void openNewMeeting() {
@@ -809,6 +793,7 @@ public class Controller {
 			Stage Meeting = new Stage();
 			Meeting.setScene(new Scene(root));
 			Meeting.setAlwaysOnTop(true);
+			Meeting.setResizable(false);
 			Meeting.show();
 
 		} catch (IOException e) {
@@ -868,7 +853,7 @@ public class Controller {
 			UserData.remove(wholeDate);
 
 			loadUI(splitterint, "");
-			
+
 			Stage stage = (Stage) addMeeting.getScene().getWindow();
 			stage.close();
 		}
@@ -890,7 +875,6 @@ public class Controller {
 		for (int i = 1; i <= 31; i++) {
 			loadUI(i, "");
 		}
-		
 
 	}
 
@@ -1025,7 +1009,6 @@ public class Controller {
 			Parent root = loader.load();
 			uicontroller = loader.getController();
 
-			WeatherFetcher.getWeather();
 			/*
 			 * FXMLLoader lloader = new
 			 * FXMLLoader(getClass().getResource("/launcher/fxml/uiButton3.fxml"));
@@ -1040,6 +1023,7 @@ public class Controller {
 			getDaysperMonth();
 
 			Client_Launcher.getDashboardStage().setScene(new Scene(root));
+			Client_Launcher.getDashboardStage().setResizable(false);
 			Client_Launcher.getDashboardStage().show();
 
 			// new Client_Launcher().start()(root));
