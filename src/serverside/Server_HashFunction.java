@@ -8,8 +8,19 @@ import java.security.spec.InvalidKeySpecException;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 
+/*
+ * 
+ */
 public class Server_HashFunction {
 
+	/**
+	 * ueberprüft Client und Serverpassword
+	 * @param originalPassword originalpasswort vom Nutzer (schon gehast)
+	 * @param storedPassword DbPasswort des Nutzers (nochmal gehast)
+	 * @return true wenn gleich, sonst false
+	 * @throws NoSuchAlgorithmException Fehlermeldung
+	 * @throws InvalidKeySpecException Fehlermeldung
+	 */
 	static boolean validatePassword(String originalPassword, String storedPassword)
 			throws NoSuchAlgorithmException, InvalidKeySpecException {
 		String[] parts = storedPassword.split(":");
@@ -32,6 +43,12 @@ public class Server_HashFunction {
 		return diff == 0;
 	}
 
+	/**
+	 * 
+	 * @param hex Hexadez -> to byte
+	 * @return bytes zum entschlüsseln
+	 * @throws NoSuchAlgorithmException Fehlermeldung
+	 */
 	private static byte[] fromHex(String hex) throws NoSuchAlgorithmException {
 		byte[] bytes = new byte[hex.length() / 2];
 		for (int i = 0; i < bytes.length; i++) {
@@ -40,6 +57,12 @@ public class Server_HashFunction {
 		return bytes;
 	}
 
+	/**
+	 * @param password
+	 * @return
+	 * @throws NoSuchAlgorithmException
+	 * @throws InvalidKeySpecException
+	 */
 	static String generateStorngPasswordHash(String password) throws NoSuchAlgorithmException, InvalidKeySpecException {
 		int iterations = 10000;
 		char[] chars = password.toCharArray();
@@ -51,6 +74,10 @@ public class Server_HashFunction {
 		return iterations + ":" + toHex(salt) + ":" + toHex(hash);
 	}
 
+	/**
+	 * @return
+	 * @throws NoSuchAlgorithmException
+	 */
 	private static byte[] getSalt() throws NoSuchAlgorithmException {
 		SecureRandom sr = SecureRandom.getInstance("SHA1PRNG");
 		byte[] salt = new byte[16];
@@ -58,6 +85,11 @@ public class Server_HashFunction {
 		return salt;
 	}
 
+	/**
+	 * @param array
+	 * @return
+	 * @throws NoSuchAlgorithmException
+	 */
 	private static String toHex(byte[] array) throws NoSuchAlgorithmException {
 		BigInteger bi = new BigInteger(1, array);
 		String hex = bi.toString(16);

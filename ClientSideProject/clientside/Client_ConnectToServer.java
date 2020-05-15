@@ -5,14 +5,25 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 
 /*
- * Sets Up the IP and PortAdress.
+ *
+ *
+ *
+ */
+/**
+ * @author MaierL
  *
  */
 public class Client_ConnectToServer {
 
+	/**
+	 * 
+	 */
 	static Socket socket;
 
 
+	/**
+	 * @return true, falls connection aufgebaut wurden, sonst false
+	 */
 	public static boolean startConnection() {
 		try {
 			socket = new Socket("localhost", 7778);

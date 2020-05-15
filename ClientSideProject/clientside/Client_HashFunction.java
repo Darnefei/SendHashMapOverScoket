@@ -6,9 +6,19 @@ import java.security.spec.InvalidKeySpecException;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 
+/**
+ * @author MaierL
+ *
+ */
 public class Client_HashFunction {
 
  
+    /**
+     * @param password
+     * @return
+     * @throws NoSuchAlgorithmException
+     * @throws InvalidKeySpecException
+     */
     public static String generateStorngPasswordHash(String password) throws NoSuchAlgorithmException, InvalidKeySpecException
     {
         int iterations = 10000;
@@ -21,6 +31,10 @@ public class Client_HashFunction {
         return iterations + ":" + toHex(salt) + ":" + toHex(hash);
     }
      
+    /**
+     * @return
+     * @throws NoSuchAlgorithmException
+     */
     private static byte[] getSalt() throws NoSuchAlgorithmException
     {
         byte[] salt = new byte[16];
@@ -28,6 +42,11 @@ public class Client_HashFunction {
         return salt;
     }
      
+    /**
+     * @param array
+     * @return
+     * @throws NoSuchAlgorithmException
+     */
     private static String toHex(byte[] array) throws NoSuchAlgorithmException
     {
         BigInteger bi = new BigInteger(1, array);

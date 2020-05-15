@@ -17,7 +17,7 @@
       <AnchorPane prefHeight="69.0" prefWidth="1600.0">
          <children>
             <Label fx:id="weatherData" layoutX="1521.0" layoutY="25.0" text="Wetterdaten" />
-            <SplitMenuButton layoutX="1362.0" layoutY="21.0" mnemonicParsing="false" text="Nutzername">
+            <SplitMenuButton fx:id="Nutzername" layoutX="1362.0" layoutY="21.0" mnemonicParsing="false" text="Nutzername">
               <items>
                 <MenuItem mnemonicParsing="false" text="Action 1" />
                 <MenuItem mnemonicParsing="false" text="Action 2" />

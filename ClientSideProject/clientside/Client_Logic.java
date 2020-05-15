@@ -8,6 +8,11 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.HashMap;
 
+/*
+ * Die Klasse Client_Logic, wird benutzt um mit den Server zu kommunizieren
+ * 
+ * 
+ */
 public class Client_Logic {
 
 	static int length;
@@ -21,6 +26,10 @@ public class Client_Logic {
 	private static HashMap<Integer, String> getData = new HashMap<Integer, String>();
 
 	
+	/**
+	 * sendet das Kommando an die DB
+	 * @param command Kommando das gesendet werden soll
+	 */
 	public static void sendCommand(String command) {
 		printWriter.print(command);
 		printWriter.flush();
@@ -29,6 +38,11 @@ public class Client_Logic {
 	}
 
 	// Senden der Daten (login, appointment und register)
+	/**
+	 * Sendet die Daten zur Datenbank
+	 * @param data Hashmap gefüllt mit Daten, je nach Kommando
+	 * @return True, falls es funktioniert hat, sonst false
+	 */
 	public static boolean sendData(HashMap<String, String> data) {
 
 		try {
@@ -65,6 +79,11 @@ public class Client_Logic {
 	// bekommen der ganzen Daten (alle Termine)
 
 
+	/**
+	 * Holt die Daten von der Datenbank
+	 * @return gibt die KalenderHashmap zurück
+	 * 
+	 */
 	public static HashMap<Integer, String> getData() {
 
 		int anzahlZeichen;
@@ -117,6 +136,10 @@ public class Client_Logic {
 
 
 
+	/**
+	 * Öffnet Reader und Writer
+	 * @param socket verbundener Socket
+	 */
 	public static void activateIOStreams(Socket socket) {
 		try {
 			bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));

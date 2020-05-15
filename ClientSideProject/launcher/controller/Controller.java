@@ -1,47 +1,59 @@
 package launcher.controller;
 
 import java.io.IOException;
-import java.net.URL;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.YearMonth;
-import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
+
 import java.util.Date;
 import java.util.HashMap;
-import java.util.ResourceBundle;
 import java.util.concurrent.TimeUnit;
 
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
-import javafx.scene.control.ScrollBar;
+import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
+
 import clientside.Client_HashFunction;
 import clientside.Client_Launcher;
 import clientside.Client_Logic;
 import clientside.WeatherFetcher;
 
+/*
+ * In der Controllerklasse werden alle Scenes und Buttons aufgerufen und initalisiert
+ * Zudem sind hier die Methoden zu den Knöpfen und zur sonstigen UI-Logic programmiert
+ * Wichtige Methoden hierbei sind:
+ * 
+ * SignIn() und SignUp() um einen Nutzer einzuloggen oder zu registrieren
+ * 
+ * loadUI ( int , String )  ->  fügt den Kalendertagen die zugehörigen Daten hinzu indem diese die 
+ * Methode readValueofHashMap ( int Year, int Month, int Day) um den Terminstring des aktuellen Tages zu bekommen
+ * 
+ * In der getActualMonth() Methode wird beim ersten mal einloggen das UI neu geladen.
+ * 
+ * Durch openNewMeeting() kann ein neuer Termin angelegt werden.
+ * 
+ * Die meisten anderen Methoden sind zuständig, um mit den verschiedenen Monaten und Jahren zu interagieren.
+ * 
+ * 
+ */
+
 public class Controller {
 	static int linesofHash = 1;
 
+	String neuerNutzerName;
 	static HashMap<Integer, String> allEntrys;
 	public static int actYear;
 	public static int actMonth;
@@ -64,8 +76,12 @@ public class Controller {
 	private DatePicker datePicker = new DatePicker();
 
 	@FXML
+	private SplitMenuButton Nutzername = new SplitMenuButton();
+	@FXML
 	private TextField textFieldHour;
 
+	@FXML
+	private Label errorLabel1;
 	@FXML
 	private Button addMeeting;
 
@@ -116,97 +132,97 @@ public class Controller {
 
 	@FXML
 
-	private Button buttonDayTwo;
+	private Button buttonDayTwo = new Button();
 
 	@FXML
-	private Button buttonDayThree;
+	private Button buttonDayThree = new Button();
 
 	@FXML
-	private Button buttonDayEight;
+	private Button buttonDayEight = new Button();
 
 	@FXML
-	private Button buttonDayNine;
+	private Button buttonDayNine = new Button();
 
 	@FXML
-	private Button buttonDayFifteen;
+	private Button buttonDayFifteen = new Button();
 
 	@FXML
-	private Button buttonDaySixteen;
+	private Button buttonDaySixteen = new Button();
 
 	@FXML
-	private Button buttonDayTwentyTwo;
+	private Button buttonDayTwentyTwo = new Button();
 
 	@FXML
-	private Button buttonDayTwentyFive;
+	private Button buttonDayTwentyFive = new Button();
 
 	@FXML
-	private Button buttonDayTwentyFour;
+	private Button buttonDayTwentyFour = new Button();
 
 	@FXML
-	private Button buttonDayThirty;
+	private Button buttonDayThirty = new Button();
 
 	@FXML
-	private Button buttonDayTwentyNine;
+	private Button buttonDayTwentyNine = new Button();
 
 	@FXML
-	private Button buttonDayTwentyThree;
+	private Button buttonDayTwentyThree = new Button();
 
 	@FXML
-	private Button buttonDayFourteen;
+	private Button buttonDayFourteen = new Button();
 
 	@FXML
-	private Button buttonDayTwentyOne;
+	private Button buttonDayTwentyOne = new Button();
 
 	@FXML
-	private Button buttonDayTwenty;
+	private Button buttonDayTwenty = new Button();
 
 	@FXML
-	private Button buttonDayTwentyEight;
+	private Button buttonDayTwentyEight = new Button();
 
 	@FXML
-	private Button buttonDayTwentySeven;
+	private Button buttonDayTwentySeven = new Button();
 
 	@FXML
-	private Button buttonDayTwentySix;
+	private Button buttonDayTwentySix = new Button();
 
 	@FXML
-	private Button buttonDayTwelve;
+	private Button buttonDayTwelve = new Button();
 
 	@FXML
-	private Button buttonDayFive;
+	private Button buttonDayFive = new Button();
 
 	@FXML
-	private Button buttonDaySeven;
+	private Button buttonDaySeven = new Button();
 
 	@FXML
-	private Button buttonDaySix;
+	private Button buttonDaySix = new Button();
 
 	@FXML
-	private Button buttonDayThirteen;
+	private Button buttonDayThirteen = new Button();
 
 	@FXML
-	private Button buttonDaySeventeen;
+	private Button buttonDaySeventeen = new Button();
 
 	@FXML
-	private Button buttonDayEighteen;
+	private Button buttonDayEighteen = new Button();
 
 	@FXML
-	private Button buttonDayNineteen;
+	private Button buttonDayNineteen = new Button();
 
 	@FXML
-	private Button buttonDayTen;
+	private Button buttonDayTen = new Button();
 
 	@FXML
-	private Button buttonDayFour;
+	private Button buttonDayFour = new Button();
 
 	@FXML
-	private Button buttonDayEleven;
+	private Button buttonDayEleven = new Button();
 
 	@FXML
-	private Button buttonDayOne;
+	private Button buttonDayOne = new Button();
 
 	@FXML
-	private Button buttonDayThirtyOne;
+	private Button buttonDayThirtyOne = new Button();
 
 	@FXML
 	private Label dayInfo;
@@ -276,7 +292,7 @@ public class Controller {
 	private Label uiButton31 = new Label();
 
 	@FXML
-	private BorderPane borderpane;
+	private BorderPane borderpane = new BorderPane();
 
 	@FXML
 	private Label tagesansicht;
@@ -650,21 +666,9 @@ public class Controller {
 		}
 
 	}
-	// String s = getactualDate() -> aktuelles Datum des Knopfes
-	// getDatenaus HashMap -> Hashmap suchen nach Datum -> Eintrag
-	// getDatenausHashmap soll erst enden, wenn alle Daten die das Datum haben
-	// gelesen wurden.
-	// getDatenausHashmap sortieren nach Stunden und Minuten angezeigt werden muss
-	// eigentlich dann nur noch Stunden:Mintunen (Jahr:Monat:Tag erschlieï¿½t sich
-	// aus
-	// UI)
-	// wir bekommen sendString raus.
 
-	// ----------------------------------------------------Mehotde---------------------
-	// hier werden die Daten geholt!!!!
-	// ï¿½bergeben werden muss Jahr/Monat
 	String readValueofHashMap(int Year, int Month, int Day) {
-		// 2020-12
+		
 
 		String dateandEntry;
 		String date;
@@ -703,7 +707,6 @@ public class Controller {
 		}
 
 		System.out.println(allNote);
-		// loadUI(Integer.toString(splitints[2]), allNote);
 
 		return allNote;
 
@@ -722,15 +725,16 @@ public class Controller {
 		actMonth = Integer.parseInt(actualMonth) - 1;
 		actYear = Integer.parseInt(actualYear);
 
-		// System.out.println(actualYear);
+		for (int i = 1; i <= 31; i++) {
+			loadUI(i, "");
+		}
 
-		uicontroller.actualDate.setText(month[actMonth]);
+		uicontroller.Nutzername.setText("Hallo " + user);
+		uicontroller.actualDate.setText(actYear + " " + month[actMonth]);
 
 	}
 
 	private void getDaysperMonth() {
-
-		// braucht evtl noch eine Methode fï¿½r aktuelles Datum?
 
 		switch (month[actMonth]) {
 		case "January":
@@ -754,7 +758,6 @@ public class Controller {
 		case "September":
 		case "November":
 
-			// System.out.println("Es ist " + month);
 			uicontroller.buttonDayThirty.setDisable(false);
 			uicontroller.buttonDayThirty.setVisible(true);
 			uicontroller.buttonDayTwentyNine.setDisable(false);
@@ -764,7 +767,15 @@ public class Controller {
 			break;
 
 		case "February":
-			// System.out.println("Es ist " + month);
+			if(actYear%4==0) {
+				uicontroller.buttonDayThirtyOne.setDisable(true);
+				uicontroller.buttonDayThirtyOne.setVisible(false);
+				uicontroller.buttonDayThirty.setDisable(true);
+				uicontroller.buttonDayThirty.setVisible(false);
+				uicontroller.buttonDayTwentyNine.setDisable(false);
+				uicontroller.buttonDayTwentyNine.setVisible(true);
+				
+			} else {
 			uicontroller.buttonDayThirtyOne.setDisable(true);
 			uicontroller.buttonDayThirtyOne.setVisible(false);
 			uicontroller.buttonDayThirty.setDisable(true);
@@ -772,6 +783,7 @@ public class Controller {
 			uicontroller.buttonDayTwentyNine.setDisable(true);
 			uicontroller.buttonDayTwentyNine.setVisible(false);
 			break;
+			}
 		}
 
 	}
@@ -804,40 +816,6 @@ public class Controller {
 		}
 	}
 
-	public void newMeetingMethod() {
-
-		if (meetingcontroller.meetingName.getText().isEmpty() || meetingcontroller.textFieldHour.getText().isEmpty()
-				|| meetingcontroller.textFieldMinute.getText().isEmpty()) {
-
-			String minutess = meetingcontroller.textFieldMinute.getText();
-			int min = Integer.parseInt(minutess);
-			String hourss = meetingcontroller.textFieldHour.getText();
-			int hour = Integer.parseInt(hourss);
-			meetingcontroller.errorLabel.setStyle("-fx-text-fill: red;");
-			if (meetingName.getLength() < 1) {
-				meetingcontroller.errorLabel.setText("Der Termin muss mind. 1 Zeichen enthalten");
-				return;
-			}
-			// if .length
-			if (meetingcontroller.textFieldHour.getText().matches("[0-9]+")) {
-				meetingcontroller.errorLabel.setText("Es sind nur Zahlen von 0 bis 23 erlaubt");
-				return;
-			}
-			if (hour < 0 || hour > 23) {
-				meetingcontroller.errorLabel.setText("Es sind nur Zahlen von 0 bis 23 erlaubt");
-				return;
-			}
-			if (meetingcontroller.textFieldMinute.getText().matches("[0-9]+")) {
-				meetingcontroller.errorLabel.setText("Es sind nur Zahlen von 0 bis 59 erlaubt");
-				return;
-			}
-			if (min > 59 || min < 0) {
-				meetingcontroller.errorLabel.setText("Es sind nur Zahlen von 0 bis 59 erlaubt");
-				return;
-			}
-		}
-	}
-
 	public void setActualDate() {
 		meetingcontroller.datePicker.setValue(LocalDate.now());
 
@@ -850,28 +828,35 @@ public class Controller {
 		String min = textFieldMinute.getText();
 		String meetingNamen = meetingName.getText();
 
+		String cutDate = datum.toString();
+		String[] splitter = cutDate.split("-");
+		int splitterint = Integer.parseInt(splitter[2]);
+
 		String wholeDate = datum.toString() + "-" + hour + "-" + min;
 
 		if (hour.equals("") || min.equals("") || meetingNamen.equals("")) {
+			errorLabel1.setText("Bitte alle Felder befüllen");
 
 			return;
 
 		} else if (!min.matches("[0-9]+")) {
-
+			errorLabel1.setText("Es sind nur Zahlen von 0 bis 60 erlaubt");
 			return;
 
 		} else if (!hour.matches("[0-9]+")) {
 
+			errorLabel1.setText("Es sind nur Zahlen von 0 bis 23 erlaubt");
 			return;
 		}
 		int hourint = Integer.parseInt(hour);
 		int minint = Integer.parseInt(min);
 
-		if (!(hourint > 0 && hourint < 23)) {
-
+		if (!(hourint >= 0 && hourint < 24)) {
+			meetingcontroller.errorLabel1.setText("Es sind nur Zahlen von 0 bis 23 erlaubt");
 			return;
-		} else if (!(minint > 0 && minint < 60)) {
+		} else if (!(minint >= 0 && minint < 60)) {
 
+			meetingcontroller.errorLabel1.setText("Es sind nur Zahlen von 0 bis 59 erlaubt");
 			return;
 		} else {
 
@@ -882,6 +867,8 @@ public class Controller {
 			Client_Logic.sendData(UserData);
 			UserData.remove(wholeDate);
 
+			loadUI(splitterint, "");
+			
 			Stage stage = (Stage) addMeeting.getScene().getWindow();
 			stage.close();
 		}
@@ -898,12 +885,12 @@ public class Controller {
 			actMonth += 1;
 		}
 		settogray();
-		actualDate.setText(month[actMonth]);
+		actualDate.setText(actYear + " " + month[actMonth]);
 		getDaysperMonth();
 		for (int i = 1; i <= 31; i++) {
 			loadUI(i, "");
 		}
-		// readValueofHashMap(actYear, actMonth);
+		
 
 	}
 
@@ -918,7 +905,7 @@ public class Controller {
 		}
 
 		settogray();
-		actualDate.setText(month[actMonth]);
+		actualDate.setText(actYear + " " + month[actMonth]);
 		getDaysperMonth();
 		for (int i = 1; i <= 31; i++) {
 			loadUI(i, "");
@@ -1054,6 +1041,7 @@ public class Controller {
 
 			Client_Launcher.getDashboardStage().setScene(new Scene(root));
 			Client_Launcher.getDashboardStage().show();
+
 			// new Client_Launcher().start()(root));
 
 		} catch (IOException e) {

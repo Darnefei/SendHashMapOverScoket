@@ -4,10 +4,22 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+/**
+ * @author MaierL
+ *
+ */
 public class Server_Launcher {
 	
+	/**
+	 * 
+	 */
 	static Socket socket;
 
+	/**
+	 * @param args Braucht keine Anfangsparameter
+	 * @throws IOException Fehlermeldung	
+	 * @throws ClassNotFoundException Fehlermeldung
+	 */
 	public static void main(String[] args) throws IOException, ClassNotFoundException {
 
 		ServerSocket ss = Server_Setup.startUpServer();
@@ -24,6 +36,9 @@ public class Server_Launcher {
 		}
 
 	}
+	/**
+	 * Beendet die Verbindung
+	 */
 	public static void endConnection(){
 		try {
 			socket.close();
