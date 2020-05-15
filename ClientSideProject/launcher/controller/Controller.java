@@ -37,6 +37,7 @@ import javafx.stage.StageStyle;
 import clientside.Client_HashFunction;
 import clientside.Client_Launcher;
 import clientside.Client_Logic;
+import clientside.WeatherFetcher;
 
 public class Controller {
 	static int linesofHash = 1;
@@ -1037,6 +1038,7 @@ public class Controller {
 			Parent root = loader.load();
 			uicontroller = loader.getController();
 
+			WeatherFetcher.getWeather();
 			/*
 			 * FXMLLoader lloader = new
 			 * FXMLLoader(getClass().getResource("/launcher/fxml/uiButton3.fxml"));
