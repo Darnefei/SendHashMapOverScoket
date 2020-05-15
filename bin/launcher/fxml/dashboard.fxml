@@ -16,7 +16,7 @@
    <children>
       <AnchorPane prefHeight="69.0" prefWidth="1600.0">
          <children>
-            <SplitMenuButton fx:id="Nutzername" layoutX="1480.0" layoutY="21.0" mnemonicParsing="false" text="Nutzername">
+            <SplitMenuButton fx:id="Nutzername" layoutX="1444.0" layoutY="21.0" mnemonicParsing="false" text="Nutzername">
               <items>
                 <MenuItem mnemonicParsing="false" text="Action 1" />
                 <MenuItem mnemonicParsing="false" text="Action 2" />
@@ -90,7 +90,7 @@
       </SplitPane>
       <AnchorPane prefHeight="45.0" prefWidth="1600.0">
          <children>
-            <Label layoutX="772.0" layoutY="13.0" text="© by Maier &amp; Paetow" />
+            <Label layoutX="760.0" layoutY="13.0" prefHeight="25.0" prefWidth="219.0" text="Design and Logic © by Maier &amp; Paetow" />
             <Button fx:id="newMeeting" layoutX="1200.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#newMeeting" text="Termin hinzufügen" />
          </children>
       </AnchorPane>

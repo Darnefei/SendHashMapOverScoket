@@ -966,6 +966,7 @@ public class Controller {
 
 	private void SignInMethod() {
 
+		errorLabel.setStyle("-fx-text-fill: red;");
 		if (!user.isEmpty() && !passw.isEmpty()) {
 			Client_Logic.sendCommand("login");
 			try {
@@ -984,11 +985,13 @@ public class Controller {
 			} else {
 				UserData.remove(user);
 				count++;
-				System.out.println("Falsche Zugangsdaten");
+				errorLabel.setText("Falsche Zugangsdaten");
 				if (count % 3 == 0) {
+					waittime++;
+					errorLabel.setText("Bitte warten Sie " + waittime * 3 + " Sekunden!");
 					try {
-						waittime++;
-						System.out.println("Bitte warten Sie " + waittime * 3 + " Sekunden!");
+					
+						
 						TimeUnit.SECONDS.sleep(3 * waittime);
 					} catch (InterruptedException e1) {
 						e1.printStackTrace();
