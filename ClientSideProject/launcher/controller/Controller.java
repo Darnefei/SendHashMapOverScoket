@@ -705,8 +705,7 @@ public class Controller {
 			linesofHash++;
 		}
 
-		System.out.println(allNote);
-
+	
 		return allNote;
 
 	}
