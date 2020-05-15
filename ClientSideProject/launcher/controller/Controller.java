@@ -32,21 +32,21 @@ import clientside.Client_Logic;
 
 /*
  * In der Controllerklasse werden alle Scenes und Buttons aufgerufen und initalisiert
- * Zudem sind hier die Methoden zu den Knöpfen und zur sonstigen UI-Logic programmiert
+ * Zudem sind hier die Methoden zu den Knï¿½pfen und zur sonstigen UI-Logic programmiert
  * Wichtige Methoden hierbei sind:
- * 
+ *
  * SignIn() und SignUp() um einen Nutzer einzuloggen oder zu registrieren
- * 
- * loadUI ( int , String )  ->  fügt den Kalendertagen die zugehörigen Daten hinzu indem diese die 
+ *
+ * loadUI ( int , String )  ->  fï¿½gt den Kalendertagen die zugehï¿½rigen Daten hinzu indem diese die
  * Methode readValueofHashMap ( int Year, int Month, int Day) um den Terminstring des aktuellen Tages zu bekommen
- * 
+ *
  * In der getActualMonth() Methode wird beim ersten mal einloggen das UI neu geladen.
- * 
+ *
  * Durch openNewMeeting() kann ein neuer Termin angelegt werden.
- * 
- * Die meisten anderen Methoden sind zuständig, um mit den verschiedenen Monaten und Jahren zu interagieren.
- * 
- * 
+ *
+ * Die meisten anderen Methoden sind zustï¿½ndig, um mit den verschiedenen Monaten und Jahren zu interagieren.
+ *
+ *
  */
 
 public class Controller {
@@ -81,6 +81,7 @@ public class Controller {
 
 	@FXML
 	private Label errorLabel1;
+
 	@FXML
 	private Button addMeeting;
 
@@ -110,9 +111,6 @@ public class Controller {
 
 	@FXML
 	private PasswordField confirmPassword;
-
-	@FXML
-	private Label weatherData;
 
 	@FXML
 	private Label actualDate = new Label();
@@ -292,9 +290,6 @@ public class Controller {
 
 	@FXML
 	private BorderPane borderpane = new BorderPane();
-
-	@FXML
-	private Label tagesansicht;
 
 	@FXML
 	private AnchorPane closePane;
@@ -494,7 +489,7 @@ public class Controller {
 
 	@FXML
 	void buttonDay9(MouseEvent event) {
-		loadUI(9, "jo");
+		loadUI(9, "");
 	}
 
 	@FXML
@@ -509,8 +504,6 @@ public class Controller {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/launcher/fxml/uiButton" + ui + ".fxml"));
 			Parent root = loader.load();
 			if (datum != null && !datum.isEmpty()) {
-
-				// System.out.println(counto + " " + datum);
 
 				uicontrollerloadUI = loader.getController();
 
@@ -667,7 +660,6 @@ public class Controller {
 	}
 
 	String readValueofHashMap(int Year, int Month, int Day) {
-		
 
 		String dateandEntry;
 		String date;
@@ -705,7 +697,6 @@ public class Controller {
 			linesofHash++;
 		}
 
-	
 		return allNote;
 
 	}
@@ -765,22 +756,22 @@ public class Controller {
 			break;
 
 		case "February":
-			if(actYear%4==0) {
+			if (actYear % 4 == 0) {
 				uicontroller.buttonDayThirtyOne.setDisable(true);
 				uicontroller.buttonDayThirtyOne.setVisible(false);
 				uicontroller.buttonDayThirty.setDisable(true);
 				uicontroller.buttonDayThirty.setVisible(false);
 				uicontroller.buttonDayTwentyNine.setDisable(false);
 				uicontroller.buttonDayTwentyNine.setVisible(true);
-				
+
 			} else {
-			uicontroller.buttonDayThirtyOne.setDisable(true);
-			uicontroller.buttonDayThirtyOne.setVisible(false);
-			uicontroller.buttonDayThirty.setDisable(true);
-			uicontroller.buttonDayThirty.setVisible(false);
-			uicontroller.buttonDayTwentyNine.setDisable(true);
-			uicontroller.buttonDayTwentyNine.setVisible(false);
-			break;
+				uicontroller.buttonDayThirtyOne.setDisable(true);
+				uicontroller.buttonDayThirtyOne.setVisible(false);
+				uicontroller.buttonDayThirty.setDisable(true);
+				uicontroller.buttonDayThirty.setVisible(false);
+				uicontroller.buttonDayTwentyNine.setDisable(true);
+				uicontroller.buttonDayTwentyNine.setVisible(false);
+				break;
 			}
 		}
 
@@ -789,11 +780,6 @@ public class Controller {
 	@FXML
 	void newMeeting(MouseEvent event) {
 		openNewMeeting();
-	}
-
-	@FXML
-	void editMeeting(MouseEvent event) {
-
 	}
 
 	public void openNewMeeting() {
@@ -807,6 +793,7 @@ public class Controller {
 			Stage Meeting = new Stage();
 			Meeting.setScene(new Scene(root));
 			Meeting.setAlwaysOnTop(true);
+			Meeting.setResizable(false);
 			Meeting.show();
 
 		} catch (IOException e) {
@@ -833,7 +820,7 @@ public class Controller {
 		String wholeDate = datum.toString() + "-" + hour + "-" + min;
 
 		if (hour.equals("") || min.equals("") || meetingNamen.equals("")) {
-			errorLabel1.setText("Bitte alle Felder befüllen");
+			errorLabel1.setText("Bitte alle Felder befï¿½llen");
 
 			return;
 
@@ -866,7 +853,7 @@ public class Controller {
 			UserData.remove(wholeDate);
 
 			loadUI(splitterint, "");
-			
+
 			Stage stage = (Stage) addMeeting.getScene().getWindow();
 			stage.close();
 		}
@@ -888,7 +875,6 @@ public class Controller {
 		for (int i = 1; i <= 31; i++) {
 			loadUI(i, "");
 		}
-		
 
 	}
 
@@ -1037,6 +1023,7 @@ public class Controller {
 			getDaysperMonth();
 
 			Client_Launcher.getDashboardStage().setScene(new Scene(root));
+			Client_Launcher.getDashboardStage().setResizable(false);
 			Client_Launcher.getDashboardStage().show();
 
 			// new Client_Launcher().start()(root));
