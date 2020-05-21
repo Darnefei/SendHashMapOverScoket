@@ -34,7 +34,6 @@ public class Client_Launcher extends Application {
 	@Override
 	public void start(Stage loginStage) throws IOException {
 
-		System.out.println(loginStage);
 		Parent loader = FXMLLoader.load(getClass().getResource("/launcher/fxml/login.fxml"));
 		Scene login = new Scene(loader);
 

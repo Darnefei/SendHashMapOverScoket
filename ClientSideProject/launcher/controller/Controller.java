@@ -824,15 +824,6 @@ public class Controller {
 			Parent root = loader.load();
 			uicontroller = loader.getController();
 
-			/*
-			 * FXMLLoader lloader = new
-			 * FXMLLoader(getClass().getResource("/launcher/fxml/uiButton3.fxml"));
-			 * Controller uuicontroller = lloader.getController();
-			 * uuicontroller.uiButtonThree.setText("");
-			 *
-			 * if(uiButtonThree.getText().equals("")) {
-			 * buttonDayThree.setStyle("-fx-border-color: red"); }
-			 */
 			getMonths();
 			getActualMonth();
 			getDaysperMonth();
@@ -842,7 +833,7 @@ public class Controller {
 			Client_Launcher.getDashboardStage().setResizable(false);
 			Client_Launcher.getDashboardStage().show();
 
-			// new Client_Launcher().start()(root));
+			
 
 		} catch (IOException e) {
 			System.err.println(e);

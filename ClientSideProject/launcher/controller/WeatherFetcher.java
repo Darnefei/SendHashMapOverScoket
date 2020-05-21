@@ -40,25 +40,23 @@ public class WeatherFetcher {
 			NamedNodeMap tempAttributes = temp.getAttributes();
 			temperature = tempAttributes.getNamedItem("value").getNodeValue();
 
-		} else {
+		}
+		if (city.matches("[0-9]+")) {
+			String uri = "https://api.openweathermap.org/data/2.5/weather?zip=" + city
+					+ ",de&mode=xml&units=metric&appid=3647b74e7c3ea97b9d0f5a46470ff4b3";
 
-			if (city.matches("[0-9]+")) {
-				String uri = "https://api.openweathermap.org/data/2.5/weather?zip=" + city
-						+ ",de&mode=xml&units=metric&appid=3647b74e7c3ea97b9d0f5a46470ff4b3";
+			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder documentBuilder = factory.newDocumentBuilder();
 
-				DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-				DocumentBuilder documentBuilder = factory.newDocumentBuilder();
+			Document document = documentBuilder.parse(uri);
+			NodeList temps = document.getElementsByTagName("temperature");
 
-				Document document = documentBuilder.parse(uri);
-				NodeList temps = document.getElementsByTagName("temperature");
-
-				Node temp = temps.item(0);
-				NamedNodeMap tempAttributes = temp.getAttributes();
-				temperature = tempAttributes.getNamedItem("value").getNodeValue();
-
-			}
+			Node temp = temps.item(0);
+			NamedNodeMap tempAttributes = temp.getAttributes();
+			temperature = tempAttributes.getNamedItem("value").getNodeValue();
 
 		}
+
 		return temperature;
 
 	}
