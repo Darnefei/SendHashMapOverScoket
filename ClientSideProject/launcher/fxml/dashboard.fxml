@@ -5,6 +5,7 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SplitMenuButton?>
 <?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -16,7 +17,7 @@
    <children>
       <AnchorPane prefHeight="69.0" prefWidth="1600.0">
          <children>
-            <SplitMenuButton fx:id="Nutzername" layoutX="1444.0" layoutY="21.0" mnemonicParsing="false" text="Nutzername">
+            <SplitMenuButton fx:id="Nutzername" layoutX="27.0" layoutY="21.0" mnemonicParsing="false" text="Nutzername">
               <items>
                 <MenuItem mnemonicParsing="false" text="Action 1" />
                 <MenuItem mnemonicParsing="false" text="Action 2" />
@@ -25,6 +26,9 @@
             <Button fx:id="nextMonth" layoutX="840.0" layoutY="21.0" mnemonicParsing="false" onMouseClicked="#nextMonth" text="Monat vor" />
             <Button fx:id="prevMonth" layoutX="564.0" layoutY="21.0" mnemonicParsing="false" onMouseClicked="#prevMonth" text="Monat zurück" />
             <Label fx:id="actualDate" layoutX="724.0" layoutY="25.0" text="Datum" />
+            <Label fx:id="actualWeather" layoutX="1419.0" layoutY="25.0" />
+            <TextField fx:id="actualCity" layoutX="1136.0" layoutY="21.0" prefHeight="25.0" prefWidth="151.0" promptText="PLZ/Ortsnamen eintragen" />
+            <Button fx:id="buttonWeather" layoutX="1305.0" layoutY="21.0" mnemonicParsing="false" onMouseClicked="#buttonWeather" text="Abfrage starten" />
          </children>
       </AnchorPane>
       <SplitPane prefHeight="469.0" prefWidth="1600.0" scaleShape="false" VBox.vgrow="NEVER">

@@ -50,22 +50,15 @@ import clientside.Client_Logic;
  */
 
 public class Controller {
-	static int linesofHash = 1;
 
-	String neuerNutzerName;
+	static int linesofHash = 1;
 	static HashMap<Integer, String> allEntrys;
-	public static int actYear;
-	public static int actMonth;
+	public static int actYear, actMonth;
 	static String[] month = new String[12];
-	static Controller uicontroller;
-	static Controller uicontrollerloadUI;
-	static Controller meetingcontroller;
+	static Controller uicontroller, uicontrollerloadUI, meetingcontroller;
 	Date ds = new Date();
 	String gz = ds.toString();
-	String getState;
-	String user;
-	String passw;
-	String passw2;
+	String getState, user, passw, passw2, neuerNutzerName;
 	private int waittime = 0;
 	private int count = 0;
 	private HashMap<String, String> UserData = new HashMap<String, String>();
@@ -73,224 +66,31 @@ public class Controller {
 
 	@FXML
 	private DatePicker datePicker = new DatePicker();
-
 	@FXML
 	private SplitMenuButton Nutzername = new SplitMenuButton();
 	@FXML
-	private TextField textFieldHour;
-
-	@FXML
-	private Label errorLabel1;
-
-	@FXML
-	private Button addMeeting;
-
-	@FXML
-	private TextField textFieldMinute;
-
-	@FXML
-	private TextField meetingName;
-
-	@FXML
-	private Button signin;
-
-	@FXML
-	private Button signup;
-
-	@FXML
-	private TextField username;
-
-	@FXML
-	private PasswordField password;
-
-	@FXML
-	private Button buttonLogin;
-
-	@FXML
-	private Label errorLabel;
-
-	@FXML
-	private PasswordField confirmPassword;
-
-	@FXML
-	private Label actualDate = new Label();
-
-	@FXML
-	private Button nextMonth;
-
-	@FXML
-	private Button prevMonth;
-
-	@FXML
-	private Button newMeeting;
-
-	@FXML
-	private Button editMeeting;
-
-	@FXML
-
-	private Button buttonDayTwo = new Button();
-
-	@FXML
-	private Button buttonDayThree = new Button();
-
-	@FXML
-	private Button buttonDayEight = new Button();
-
-	@FXML
-	private Button buttonDayNine = new Button();
-
-	@FXML
-	private Button buttonDayFifteen = new Button();
-
-	@FXML
-	private Button buttonDaySixteen = new Button();
-
-	@FXML
-	private Button buttonDayTwentyTwo = new Button();
-
-	@FXML
-	private Button buttonDayTwentyFive = new Button();
-
-	@FXML
-	private Button buttonDayTwentyFour = new Button();
-
-	@FXML
-	private Button buttonDayThirty = new Button();
-
-	@FXML
-	private Button buttonDayTwentyNine = new Button();
-
-	@FXML
-	private Button buttonDayTwentyThree = new Button();
-
-	@FXML
-	private Button buttonDayFourteen = new Button();
-
-	@FXML
-	private Button buttonDayTwentyOne = new Button();
-
-	@FXML
-	private Button buttonDayTwenty = new Button();
-
-	@FXML
-	private Button buttonDayTwentyEight = new Button();
-
-	@FXML
-	private Button buttonDayTwentySeven = new Button();
-
-	@FXML
-	private Button buttonDayTwentySix = new Button();
-
-	@FXML
-	private Button buttonDayTwelve = new Button();
-
-	@FXML
-	private Button buttonDayFive = new Button();
-
-	@FXML
-	private Button buttonDaySeven = new Button();
-
-	@FXML
-	private Button buttonDaySix = new Button();
-
-	@FXML
-	private Button buttonDayThirteen = new Button();
-
-	@FXML
-	private Button buttonDaySeventeen = new Button();
-
-	@FXML
-	private Button buttonDayEighteen = new Button();
-
-	@FXML
-	private Button buttonDayNineteen = new Button();
-
-	@FXML
-	private Button buttonDayTen = new Button();
-
-	@FXML
-	private Button buttonDayFour = new Button();
-
-	@FXML
-	private Button buttonDayEleven = new Button();
-
-	@FXML
-	private Button buttonDayOne = new Button();
-
-	@FXML
-	private Button buttonDayThirtyOne = new Button();
-
-	@FXML
-	private Label dayInfo;
-
-	@FXML
-	private Label uiButton1 = new Label();
-
-	@FXML
-	private Label uiButton2 = new Label();
-	@FXML
-	private Label uiButton3 = new Label();
-	@FXML
-	private Label uiButton4 = new Label();
-	@FXML
-	private Label uiButton5 = new Label();
-	@FXML
-	private Label uiButton6 = new Label();
-	@FXML
-	private Label uiButton7 = new Label();
-	@FXML
-	private Label uiButton8 = new Label();
-	@FXML
-	private Label uiButton9 = new Label();
-	@FXML
-	private Label uiButton10 = new Label();
-	@FXML
-	private Label uiButton11 = new Label();
-	@FXML
-	private Label uiButton12 = new Label();
-	@FXML
-	private Label uiButton13 = new Label();
-	@FXML
-	private Label uiButton14 = new Label();
-	@FXML
-	private Label uiButton15 = new Label();
-	@FXML
-	private Label uiButton16 = new Label();
-	@FXML
-	private Label uiButton17 = new Label();
-	@FXML
-	private Label uiButton18 = new Label();
-	@FXML
-	private Label uiButton19 = new Label();
-	@FXML
-	private Label uiButton20 = new Label();
-	@FXML
-	private Label uiButton21 = new Label();
-	@FXML
-	private Label uiButton22 = new Label();
-	@FXML
-	private Label uiButton23 = new Label();
-	@FXML
-	private Label uiButton24 = new Label();
-	@FXML
-	private Label uiButton25 = new Label();
-	@FXML
-	private Label uiButton26 = new Label();
-	@FXML
-	private Label uiButton27 = new Label();
-	@FXML
-	private Label uiButton28 = new Label();
-	@FXML
-	private Label uiButton29 = new Label();
-	@FXML
-	private Label uiButton30 = new Label();
-	@FXML
-	private Label uiButton31 = new Label();
-
+	private Label errorLabel1, errorLabel, dayInfo, actualDate, actualWeather;
+	@FXML
+	private TextField textFieldMinute, meetingName, textFieldHour, username,actualCity;
+	@FXML
+	private PasswordField password, confirmPassword;
+	@FXML
+	private Button buttonDayTwo, buttonDayEight, buttonDayFive, buttonDayThree, buttonDayNine, buttonDayFifteen,
+			buttonDaySixteen, buttonDayTwentyTwo, buttonDayTwentyFive, buttonDayTwentyFour, buttonDayThirty,
+			buttonDayTwentyNine, buttonDayTwentyThree, buttonDayFourteen, buttonDayTwentyOne, buttonDayTwenty,
+			buttonDayTwentyEight, buttonDayTwentySeven, buttonDayTwentySix, buttonDayTwelve, buttonDaySeven,
+			buttonDaySix, buttonDayThirteen, buttonDaySeventeen, buttonDayEighteen, buttonDayNineteen, buttonDayTen,
+			buttonDayFour, buttonDayEleven, buttonDayOne, buttonDayThirtyOne, nextMonth, signin, signup,
+			buttonLogin, prevMonth, newMeeting, editMeeting, buttonWeather;
+	@FXML 
+	private Button addMeeting = new Button();
+	@FXML
+	private Label uiButton1, uiButton2, uiButton3, uiButton4, uiButton5, uiButton6, uiButton7, uiButton8, uiButton9,
+			uiButton10, uiButton11, uiButton12, uiButton13, uiButton14, uiButton15, uiButton16, uiButton17, uiButton18,
+			uiButton19, uiButton20, uiButton21, uiButton22, uiButton23, uiButton24, uiButton25, uiButton26, uiButton27,
+			uiButton28, uiButton29, uiButton30, uiButton31;
 	@FXML
 	private BorderPane borderpane = new BorderPane();
-
 	@FXML
 	private AnchorPane closePane;
 
@@ -333,26 +133,22 @@ public class Controller {
 
 	@FXML
 	private void buttonDay1(MouseEvent event) {
-
 		loadUI(1, "");
 
 	}
 
 	@FXML
 	private void buttonDay2(MouseEvent event) {
-
 		loadUI(2, "");
 	}
 
 	@FXML
 	private void buttonDay3(MouseEvent event) {
-
 		loadUI(3, "");
 	}
 
 	@FXML
 	private void buttonDay4(MouseEvent event) {
-
 		loadUI(4, "");
 	}
 
@@ -491,8 +287,8 @@ public class Controller {
 	void buttonDay9(MouseEvent event) {
 		loadUI(9, "");
 	}
-
-	@FXML
+	
+	
 	private void loadUI(int ui, String datum) {
 
 		linesofHash = 1;
@@ -990,8 +786,7 @@ public class Controller {
 					waittime++;
 					errorLabel.setText("Bitte warten Sie " + waittime * 3 + " Sekunden!");
 					try {
-					
-						
+
 						TimeUnit.SECONDS.sleep(3 * waittime);
 					} catch (InterruptedException e1) {
 						e1.printStackTrace();
@@ -1005,6 +800,23 @@ public class Controller {
 		}
 
 	}
+
+	
+	  @FXML
+	    void buttonWeather(MouseEvent event) {
+		  try {
+				String city = actualCity.getText();
+				WeatherFetcher w = WeatherFetcher.getInstance();
+				String t = w.fetch(city);
+				actualWeather.setText("Aktuelle Temperatur " + t + "°C");
+				
+
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	    }
+
 
 	public void openDashboard() {
 		try {
@@ -1024,6 +836,7 @@ public class Controller {
 			getMonths();
 			getActualMonth();
 			getDaysperMonth();
+			
 
 			Client_Launcher.getDashboardStage().setScene(new Scene(root));
 			Client_Launcher.getDashboardStage().setResizable(false);
